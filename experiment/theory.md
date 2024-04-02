@@ -197,7 +197,7 @@ Fig. 3 Current through various components.
     <td style="text-align: center; font-weight: bold;">Voltage stress</td>
     <td style="text-align: center; font-weight: bold;">Current Stress</td>
   </tr>
-  <tr style="background-color: #c9c9c9;">
+  <tr style="background-color: #FFF;">
     <td>Magnetising Inductor (L<sub>m</sub>)</td>
     <td><img src="images/th14.png" height="60px"></td>
     <td><img src="images/th15.png" height="60px"></td>

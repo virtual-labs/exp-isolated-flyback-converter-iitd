@@ -382,7 +382,7 @@ Simplifying eqn. (19) results in
 
 
 <div style="float: left; width:50%;"><br>
-  <img src="images/th33.png" height="65px">
+  <img src="images/th33.png">
       </div>
 <div style="float: right; width:50%; text-align:center;"><br>
     ..(20)

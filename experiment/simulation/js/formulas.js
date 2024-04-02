@@ -6,11 +6,11 @@ const Formulas = {
 
     step2:{
         v0(values){
-            let ans = (values.n * values.D * values.vIn)/ (Formulas.one_minus_D());
+            let ans = (values.n * values.D * values.vIn)/ Formulas.one_minus_D()
             return Number(ans.toFixed(4))
         },
         iIn(values){
-            let ans = Math.pow((values.n * values.D),2)*values.vIn / values.R * Math.pow(Formulas.one_minus_D, 2)
+            let ans = Math.pow((values.n * values.D),2)* values.vIn / values.R * Math.pow(Formulas.one_minus_D(), 2)
             return Number(ans.toFixed(4))
         },
     },

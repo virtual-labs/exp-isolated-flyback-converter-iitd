@@ -715,7 +715,7 @@ part1_box1 : new Dom(".part1_box1"),
       break;
       case 3: heading.setContent("Losses And Efficiency")
       break;
-      case 4: heading.setContent("Component Stress And Selection")
+      case 4: heading.setContent("Component Stress")
       break;
     }
   },
@@ -818,7 +818,7 @@ part1_box1 : new Dom(".part1_box1"),
 
       Scenes.items.concept_development.set().styles({
         zIndex: "5000",
-        scale: "1.087 0.903",
+        scale: "0.98 0.914",
         top: "-144px",
         position: "absolute",
       })
@@ -1604,13 +1604,13 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.setStepHeading("Step-1", "Circuit Formulation");
         
 
-      setCC("Click on the correct BOX(?) for placing the highlighted component.")
+      setCC("Click on the correct BOX for placing the highlighted component.")
       Scenes.items.new_part_1_circuit_full.set(116, 117, 287, 744)
 
 
       //! box blink --> to blink the box
-
-         function boxAnime(){
+      let boxAnimes = []
+      function boxAnime(){
         var myObject = {
           prop1: 0,
           prop2: 0,
@@ -1619,7 +1619,15 @@ part1_box1 : new Dom(".part1_box1"),
           prop5: 0,
           prop6: 0,
         }
-        
+
+
+        let 
+        box1 = Scenes.items.domQs1
+        box2 = Scenes.items.domQs2
+        box3 = Scenes.items.domQs3
+        box4 = Scenes.items.domQs4
+        box5 = Scenes.items.domQs5
+        box6 = Scenes.items.domQs6
         let boxBlink_1 = anime({
           targets: myObject,
           prop1: 360,
@@ -1702,16 +1710,16 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.new_box_img.set(4, -29, 136)
 
       //! Required positions
-      Scenes.items.new_component_voltage.set(18, -24, 123).zIndex(2)
-      Scenes.items.new_component_resistance.set(197, -30, 139).zIndex(2)
-      Scenes.items.new_component_mosfet.set(285, -24, 133).zIndex(2)
-      Scenes.items.new_component_transformer.set(458, -8, 95).zIndex(2)
-      Scenes.items.new_component_capacitor.set(646, -33, 144).zIndex(2) 
-      Scenes.items.new_component_diode.set(765, 27, 100).zIndex(2)
-
+      Scenes.items.new_component_voltage.set(18, -24, 123).zIndex(5)
+      Scenes.items.new_component_resistance.set(197, -30, 139).zIndex(5)
+      Scenes.items.new_component_mosfet.set(285, -24, 133).zIndex(5)
+      Scenes.items.new_component_transformer.set(458, -8, 95).zIndex(5)
+      Scenes.items.new_component_capacitor.set(646, -33, 144).zIndex(5) 
+      Scenes.items.new_component_diode.set(765, 27, 100).zIndex(5)
+ 
       Scenes.items.slider_box.hide()
 
-      let tempText = Scenes.items.tempText.set(40,200).hide()
+      let tempText = Scenes.items.tempText.set(450,360).hide()
       
       // * Part One Logic
       Scenes.items.domQs1.set(84, 188, 100).zIndex(3)
@@ -1723,10 +1731,11 @@ part1_box1 : new Dom(".part1_box1"),
       let qsBtns = document.querySelectorAll(".qs")
 
       // Adding onclick to all qs
-      for(let i of qsBtns){
-        i.onclick = function(){
-          // boxAnime[i].play()
-          checkClick(i)
+      // boxAnime()
+      for(let i in qsBtns){
+        qsBtns[i].onclick = function(){
+          checkClick(qsBtns[i])
+          // boxAnimes[i].play()
         }
       }
       Scenes.items.domQs6.item.onclick = function(){
@@ -1735,6 +1744,7 @@ part1_box1 : new Dom(".part1_box1"),
             // after complete
             Scenes.items.new_box_img.hide()
             // Dom.setBlinkArrow(true, 790, 408).play();
+            Scenes.items.part1_crrct_text.set(null,-10,90)
             setCC("Click 'Next' to go to next step");
             setIsProcessRunning(false);
           }
@@ -1747,6 +1757,7 @@ part1_box1 : new Dom(".part1_box1"),
           animateComponent(qsBtnDom);
           // to go to next component
           boxCount++
+          tempText.hide()
           // tempText.show()
           // tempText.setContent("Correct component click.")
           // tempText.item.style.color = "green"
@@ -1757,14 +1768,19 @@ part1_box1 : new Dom(".part1_box1"),
           // })
         }
         else{
-          // tempText.show()
-          // tempText.setContent("Incorrect component click.")
-          // tempText.item.style.color = "RED"
-          // anime({
-          //   targets: tempText.item,
-          //   duration: 400,
-          //   opacity: [0,0.5,1]
-          // })
+          let st = {
+            backgroundColor: "transperant",
+            color: "red",
+            width: "fit-content",
+            fontSize: "larger",
+          }
+          tempText.show()
+          tempText.setContent("This in incorrect placement of component, Try again").styles(st)
+          anime({
+            targets: tempText.item,
+            duration: 400,
+            opacity: [0,0.5,1]
+          })
           
           qsBtnDom.style.backgroundColor = 'red';
         }
@@ -1892,7 +1908,7 @@ part1_box1 : new Dom(".part1_box1"),
   //! Required Items
   Scenes.items.btn_record.set(355, -40)
   Scenes.items.slider_box.set(40,25)
-  sliders.generateOptionsFor(0)
+  sliders.generateOptionsFor(-1)
 
 
   Scenes.items.new_part_2_circuit_full.set(10,155, 220)
@@ -1927,37 +1943,40 @@ part1_box1 : new Dom(".part1_box1"),
     borderRadius: "0",
     width: "fit-content",
     textAlign: "center",
-    padding: "0 5px",
+    padding: "0",
     fontSize: "0.7rem",
+    lineHeight: "13px"
   }
   let textLabels = [
     
     // ! iIn
 
-    iInOn = Scenes.items.tempTitle25.set(615,-9).setContent("0 V").styles(st).hide(),
-    iInOff = Scenes.items.tempTitle26.set(816,-9).setContent("0 V").styles(st).hide(),
-
+    iInOn = Scenes.items.tempTitle25.set(613,-7).setContent("0 V").styles(st).hide(),
+    iInOff = Scenes.items.tempTitle26.set(813,-7).setContent("0 V").styles(st).hide(),
 
     // ! vL
 
-
-    vLon = Scenes.items.tempTitle27.set(614,67).setContent("0 us").styles(st).hide(),
-    vLoff = Scenes.items.tempTitle28.set(893,123).setContent("0 us").styles(st).hide(),
+    vLon = Scenes.items.tempTitle27.set(614,69).setContent("0 us").styles(st).hide(),
+    vLoff = Scenes.items.tempTitle28.set(893,125).setContent("0 us").styles(st).hide(),
 
     // ! vSw
 
-    vSwon = Scenes.items.tempTitle29.set(619,155).setContent("0 V").styles(st).hide(),
-    vSwoff = Scenes.items.tempTitle30.set(817,153).setContent("0 V").styles(st).hide(),
+    vSwon = Scenes.items.tempTitle29.set(618,157).setContent("0 V").styles(st).hide(),
+    vSwoff = Scenes.items.tempTitle30.set(814,155).setContent("0 V").styles(st).hide(),
 
     // ! vDf
     
     vDfon = Scenes.items.tempTitle32.set(621,212).setContent("0 V").styles(st).hide(),
-    vsDfoff = Scenes.items.tempTitle33.set(812,211).setContent("0 V").styles(st).hide(),
+    vsDfoff = Scenes.items.tempTitle33.set(812,213).setContent("0 V").styles(st).hide(),
 
     // ! iC
 
-    iCon = Scenes.items.tempTitle34.set(620,292).setContent("0 A").styles(st).hide(),
+    iCon = Scenes.items.tempTitle34.set(620,293).setContent("0 A").styles(st).hide(),
     iCoff = Scenes.items.tempTitle35.set(814,252).setContent("0 A").styles(st).hide(),
+
+    // ! vC
+    
+    vC = Scenes.items.tempTitle36.set(844,318).setContent("0 V").styles(st).hide(),
   ]    
  
       let currentGraph = Scenes.items.part_2_graph_empty
@@ -1978,9 +1997,9 @@ part1_box1 : new Dom(".part1_box1"),
         // ! Activate the next btn right after the click
         
         
-        let vInValue = Number(Scenes.items.slider_vIn.item.value)
-        let dutyRatioValue = Number(Scenes.items.slider_D.item.value)
-        let resistanceValue = Number(Scenes.items.slider_R.item.value)
+        let vInValue = Number(sliders.selectOp1.value)
+        let dutyRatioValue = Number(sliders.slider.value)
+        let resistanceValue = Number(sliders.selectOp2.value)
         let nValue = Number(sliders.selectOp3.value)
 
         updateValues(vInValue,dutyRatioValue,resistanceValue)
@@ -1994,23 +2013,25 @@ part1_box1 : new Dom(".part1_box1"),
 
           let textValues = [
 
-            iInOn = `${iIn}`,
-            iInOff = `${ 0 }`,
+            iInOn = `${iIn}A`,
+            iInOff = `${ 0 }A`,
 
-            vLon = `${ vInValue } V`,
-            vLoff = `${ -v0 / nValue} V`,
+            vLon = `${ vInValue }V`,
+            vLoff = `${ -v0 / nValue}V`,
 
-            vSwon = `${ 0} V`,
-            vSwoff = `${ vInValue + v0/nValue} V`,
+            vSwon = `${ 0}V`,
+            vSwoff = `${ vInValue + v0/nValue}V`,
 
-            vDfon = `${ nValue * vInValue + v0} V`,
-            vDfoff = `${ 0} V`,
+            vDfon = `${ nValue * vInValue + v0}V`,
+            vDfoff = `${ 0}V`,
 
-            iL = `${ iIn / dutyRatioValue} A`,
-            vC = v0,
+            iL = `${ iIn / dutyRatioValue}A`,
+            vC = `${v0}V`,
 
-            iCon = `${ -v0 / resistanceValue} A`,
-            iCoff = `${ (iL /nValue) - (v0/resistanceValue)} A`,
+            iCon = `${ -v0 / resistanceValue}A`,
+            iCoff = `${ (iL /nValue) - (v0/resistanceValue)}A`,
+
+            vC = `${v0}V`,
           ]  
       
           // also show the all values and graph uppper image
@@ -3876,11 +3897,12 @@ part1_box1 : new Dom(".part1_box1"),
     }),
     (step7 = function () {
       setIsProcessRunning(true);
- 
+      
       Scenes.setStepHeading(
         "",
         ""
       )
+      // componenet stress
 
       Scenes.changeHeader(4)
         // ! show the slider
@@ -3928,17 +3950,18 @@ part1_box1 : new Dom(".part1_box1"),
        Scenes.items.tempTitle53.set(443-leftMinus,253-topMinus).setContent(format_1).styles(st)
        Scenes.items.tempTitle54.set(443-leftMinus,300-topMinus).setContent(format_2).styles(st)
        Scenes.items.tempTitle55.set(443-leftMinus,355-topMinus).setContent(format_3).styles(st3)
+       let graphIdx = 6
        
-      let graph_box7 = new Dom(".graph_box4")
-      let graph_box8 = new Dom(".graph_box5")
+      let graph_box7 = new Dom(".graph_box7")
+      let graph_box8 = new Dom(".graph_box8")
       Scenes.items.graph7.set(null,null,250,355)
       Scenes.items.graph8.set(null,200,250,355)
-      graph_box4.set()
-      graph_box5.set(null,171)
+      graph_box7.set()
+      graph_box8.set(null,171)
       let ctx1 = Scenes.items.graph7.item
       let ctx2 = Scenes.items.graph8.item
-      let chart1 = Scenes.items.chart[3]
-      let chart2 = Scenes.items.chart[4]
+      let chart1 = Scenes.items.chart[graphIdx]
+      let chart2 = Scenes.items.chart[graphIdx+1]
       
       let xLabel = ""
       let yLabel = ""
@@ -4079,8 +4102,8 @@ part1_box1 : new Dom(".part1_box1"),
             },
           }  
         )
-        Scenes.items.chart[3] = chart1
-        Scenes.items.chart[4] = chart2
+        Scenes.items.chart[graphIdx] = chart1
+        Scenes.items.chart[graphIdx+1] = chart2
         
       }
 
@@ -4139,8 +4162,8 @@ part1_box1 : new Dom(".part1_box1"),
         }else{
           plotGraph()
           // Scenes.items.graph2.set(null,null,190,355)
-          Scenes.items.graph4.set(null,null,250,355)
-          Scenes.items.graph5.set(null,200,250,355)
+          Scenes.items.graph7.set(null,null,250,355)
+          Scenes.items.graph8.set(null,200,250,355)
         }   
 
 
@@ -4148,7 +4171,8 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.btn_reset.item.onclick = function(){
         // reset all the parameters
         // so just simply call this step again
-        Scenes.items.chart[3] = null
+        Scenes.items.chart[graphIdx] = chart1
+        Scenes.items.chart[graphIdx+1] = chart2
         Scenes.steps[8]()        
       }
        
@@ -4157,7 +4181,7 @@ part1_box1 : new Dom(".part1_box1"),
 
          // taking values from all sliders 
         let vInValue = Number(sliders.selectOp1.value)
-        let dutyRatioValue = Number(sliders.selectOp3.value)
+        let dutyRatioValue = Number(sliders.slider.value)
         let resistanceValue = Number(sliders.selectOp2.value)
         let nValue = Number(sliders.selectOp3.value)
 
@@ -4174,7 +4198,7 @@ part1_box1 : new Dom(".part1_box1"),
         let v0 = Number(Formulas.stress.v0(values)).toFixed(2)
         let v0byN = Number(Formulas.stress.v0(values) / nValue).toFixed(2)
         let iIn = Number(Formulas.stress.iIn(values)).toFixed(2)
-        let iLPbyN = Number(Formulas.stress.iLP(values) / nValue).toFixed(2)
+        let iLMPbyN = Number(Formulas.stress.iLMP(values) / nValue).toFixed(2)
         let delILMby2byN = Number((Formulas.stress.delILM(values) / 2) / nValue).toFixed(2)
 
         console.log(vInValue,dutyRatioValue,resistanceValue)
@@ -4184,10 +4208,10 @@ part1_box1 : new Dom(".part1_box1"),
         let vC = v0
 
         let iS = iIn
-        let iD = iLPbyN
+        let iD = iLMPbyN
         let iC = delILMby2byN
 
-        Scenes.items.tempTitle53.setContent(`${vS} V/${Is} A`)
+        Scenes.items.tempTitle53.setContent(`${vS} V/${iS} A`)
         Scenes.items.tempTitle54.setContent(`${vD} V/${iD} A`)
         Scenes.items.tempTitle55.setContent(`${vC} V/${iC} A`)
 
@@ -4198,8 +4222,8 @@ part1_box1 : new Dom(".part1_box1"),
         plotGraph()
         graph.addData(chart1,0,graph1_data)
         graph.addData(chart2,0,graph2_data)
-        Scenes.items.graph4.set(null,null,250,355)
-        Scenes.items.graph5.set(null,200,250,355)
+        Scenes.items.graph7.set(null,null,250,355)
+        Scenes.items.graph8.set(null,200,250,355)
           // after complete
           Dom.setBlinkArrow(true, 790, 408).play();
           // setCC("Click 'Next' to go to next step");
@@ -4297,7 +4321,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 7
+Scenes.currentStep = 1
 
 Scenes.next()
 // Scenes.steps[3]()

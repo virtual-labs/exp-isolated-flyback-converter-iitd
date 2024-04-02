@@ -97,8 +97,10 @@ const sliders = {
       }
       selectEleOpn.innerHTML = strOps;
     }
-    this.setShowOutputOnInput(stepIndex)
+    if(stepIndex>=0)
+      this.setShowOutputOnInput(stepIndex)
     switch(stepIndex){
+      case -1:
       case 0:
       case 1:
         this.enableAll()

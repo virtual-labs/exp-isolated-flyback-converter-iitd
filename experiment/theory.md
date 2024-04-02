@@ -143,14 +143,14 @@ From eqn. 1
 
 
 <div style="float: left; width:50%;">
-  <img src="images/th11.png" height="30px">
+  <img src="images/th11.png" height="75px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(8)
       </div>
-<br>
+
 <div style="float: left; width:100%;"><br>
-<br>
+
 Therefore, the inductor ripple current is
 <br><br>
 
@@ -158,7 +158,7 @@ Therefore, the inductor ripple current is
 
 <br>
 <div style="float: left; width:50%;">
-  <img src="images/th12.png" height="30px">
+  <img src="images/th12.png" height="75px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(9)
@@ -199,23 +199,23 @@ Fig. 3 Current through various components.
   </tr>
   <tr style="background-color: #FFF;">
     <td>Magnetising Inductor (L<sub>m</sub>)</td>
-    <td><img src="images/th14.png" height="60px"></td>
-    <td><img src="images/th15.png" height="60px"></td>
+    <td><img src="images/th14.png" height="45px"></td>
+    <td><img src="images/th15.png" height="70px"></td>
   </tr>
   <tr style="background-color: #FFF;">
     <td>Capacitor (C)</td>
-    <td><img src="images/th16.png" height="60px"></td>
-    <td><img src="images/th17.png" height="60px"></td>
+    <td><img src="images/th16.png" height="45px"></td>
+    <td><img src="images/th17.png" height="70px"></td>
   </tr>
   <tr style="background-color: #FFF;">
     <td>Switch (S<sub>w</sub>)</td>
-    <td><img src="images/th18.png" height="60px"></td>
-    <td><img src="images/th19.png" height="60px"></td>
+    <td><img src="images/th18.png" height="45px"></td>
+    <td><img src="images/th19.png" height="70px"></td>
   </tr>
   <tr style="background-color: #FFF;">
     <td>Diode (D<sub>b</sub>)</td>
-    <td><img src="images/th20.png" height="60px"></td>
-    <td><img src="images/th21.png" height="60px"></td>
+    <td><img src="images/th20.png" height="45px"></td>
+    <td><img src="images/th21.png" height="70px"></td>
   </tr>
 </table>
 </center>
@@ -343,7 +343,7 @@ Voltage across inductor L<sub>m</sub> is<br>
 
 <br>
 <div style="float: left; width:50%;">
-  <img src="images/th30.png" height="45px"><br>
+  <img src="images/th30.png" height="50px"><br>
 </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(17)
@@ -356,7 +356,7 @@ Voltage across inductor L<sub>m</sub> is<br>
 
 <br>
 <div style="float: left; width:50%;">
-  <img src="images/th31.png" height="45px"><br>
+  <img src="images/th31.png" height="50px"><br>
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(18)
@@ -369,7 +369,7 @@ Applying volt-sec balance on inductor (eqn. 17 and 18) <br><br>
 </div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th32.png" >
+  <img src="images/th32.png" height="45px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(19)
@@ -382,7 +382,7 @@ Simplifying eqn. (19) results in
 
 
 <div style="float: left; width:50%;"><br>
-  <img src="images/th33.png">
+  <img src="images/th33.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;"><br>
     ..(20)

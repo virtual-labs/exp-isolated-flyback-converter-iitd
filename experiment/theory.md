@@ -223,4 +223,168 @@ Fig. 3 Current through various components.
 
 
 
-<br> ===================================== <br>
+
+<br>
+<div style="float: left; width:100%;"><br>
+
+**g) Efficiency analysis:**     
+
+</div>
+
+<br>
+<div style="float: left; width:50%;">
+  <img src="images/th22.png" height="70px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(10)
+      </div>
+
+<div style="float: left; width:100%;">
+<br><br>    
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/th23.png" height="80px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(11)
+      </div>
+
+<div style="float: left; width:100%;"><br><br>
+     
+The power loss occurring in various components are given below.<br><br>
+Power loss in inductor:
+</div>
+
+<br>
+<div style="float: left; width:50%;">
+  <img src="images/th24.png" height="60px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(12)
+      </div>
+<br><br>
+
+<div style="float: left; width:100%;">
+  
+Power loss in capacitor:    
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/th25.png" height="60px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(13)
+      </div>
+
+<div style="float: left; width:100%;"><br>
+
+Power loss in switch:
+</div>
+
+<br>
+<div style="float: left; width:50%;">
+  <img src="images/th26.png" height="60px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(14)
+      </div>
+<br><br>
+
+<div style="float: left; width:100%;">
+  
+Power loss in Diode:   
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/th27.png" height="60px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(15)
+      </div>
+
+<div style="float: left; width:100%;"><br>
+     
+Total power loss:
+</div>
+
+<br>
+<div style="float: left; width:50%;">
+  <img src="images/th28.png" height="60px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(16)
+      </div>
+<br><br>
+
+<div style="float: left; width:100%;"><br>
+
+**g) Effect of non-idealities on voltage gain expression:**     
+
+</div>
+
+<br><br>
+
+<center>
+  <img src="images/th29.png" height="350px">
+  
+Fig. 4. Circuit configuration of flyback converter with non-idealities
+
+</center>
+
+<br><br>
+
+<div style="float: left; width:100%;"><br><br>
+
+Voltage across inductor L<sub>m</sub> is<br>
+
+**Mode – I :**
+</div>
+
+<br>
+<div style="float: left; width:50%;">
+  <img src="images/th30.png" height="45px"><br>
+</div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(17)
+</div>
+<br><br>
+<div style="float: left; width:100%;">
+     
+**Mode – II :**
+</div>
+
+<br>
+<div style="float: left; width:50%;">
+  <img src="images/th31.png" height="45px"><br>
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(18)
+      </div>     
+
+
+<div style="float: left; width:100%;"><br><br>
+  
+Applying volt-sec balance on inductor (eqn. 17 and 18) <br><br>  
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/th32.png" >
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(19)
+      </div>
+
+<div style="float: left; width:100%;"><br>
+     
+Simplifying eqn. (19) results in
+</div>
+
+
+<div style="float: left; width:50%;"><br>
+  <img src="images/th33.png" height="75px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(20)
+      </div>
+<br><br>

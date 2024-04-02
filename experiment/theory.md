@@ -49,7 +49,7 @@ Voltage across inductor L<sub>m</sub> is:
 **Mode – I :**
 <br>
 <div style="float: left; width:50%;">
-  <img src="images/th4.png" height="25px">
+  <img src="images/th4.png" height="40px">
 </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(1)
@@ -59,30 +59,33 @@ Voltage across inductor L<sub>m</sub> is:
 **Mode – II :**
 <br>
 <div style="float: left; width:50%;">
-  <img src="images/th5.png" height="25px">
+  <img src="images/th5.png" height="75px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(2)
       </div>     
 <br><br>
 
+<div style="float: left; width:100%;"><br>
 Applying volt-sec balance on inductor (eqn. 1 and 2)
-<br>
+<br><br>
+</div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th6.png" height="25px">
+  <img src="images/th6.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(3)
 
 </div>
 
-<br><br>
+<div style="float: left; width:100%;"><br>
 On solving eqn. 3
-<br>
+<br><br>
+</div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th7.png" height="60px">
+  <img src="images/th7.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;" height="60px">
     ..(4)
@@ -100,7 +103,7 @@ Under ideal condition, input power must be equal to output power, hence
 <br><br>
 
 <div style="float: left; width:50%;">
-  <img src="images/th8.png" height="30px">
+  <img src="images/th8.png" height="35px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(5)
@@ -112,7 +115,7 @@ Under ideal condition, input power must be equal to output power, hence
 </div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th9.png" height="30px">
+  <img src="images/th9.png" height="35px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(6)
@@ -125,7 +128,7 @@ Substituting eqn. 4 into eqn. 10
 </div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th10.png" height="30px">
+  <img src="images/th10.png" height="70px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(7)
@@ -136,7 +139,7 @@ Substituting eqn. 4 into eqn. 10
   **c) Inductor current ripple (Lm):**
 <br></div>
 
-<div style="float: left; width:100%;"><br><br>
+<div style="float: left; width:100%;"><br>
 From eqn. 1
 <br><br>
 </div>

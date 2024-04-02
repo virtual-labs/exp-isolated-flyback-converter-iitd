@@ -2,12 +2,32 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+
+      "question": "Answer the questions given below (refer Fig.2):<br> <center> <img src='images/pos1.png' height='300px'><br><br>Fig. 2. Circuit diagram of flyback converter.</center> <br><br> 1. Choose the correct expression for inductor ripple current (∆i<sub>Lm</sub>)::",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "<img src='images/pos2.png' height='30px'><br>",
+        "b": "<img src='images/pos3.png' height='30px'><br>",
+        "c": "<img src='images/pos4.png' height='30px'><br>",
+        "d": "<img src='images/pos5.png' height='30px'><br>"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+
+    {
+
+      "question": "2. Find the load current when input current is 0.5 A and duty ratio-D is 0.7 with unity turns ratio",
+      "answers": {
+        "a": "0.21 A",
+        "b": "1.17 A",
+        "c": "0.7 A",
+        "d": "0.35 A"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -18,13 +38,35 @@
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
+
     {
-      "question": "This is a Sample Question 2?",
+
+      "question": "3. A flyback converter has ‘Vin’ as source voltage and ‘D’ is the duty ratio. Find the r.m.s value of output voltage with unity turns ratio",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "<img src='images/pos6.png' height='30px'><br>",
+        "b": "<img src='images/pos7.png' height='30px'><br>",
+        "c": "<img src='images/pos8.png' height='30px'><br>",
+        "d": "<img src='images/pos9.png' height='30px'><br>"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    
+    {
+     
+      "question": "4. Which material is used to make the core of Flyback transformer",
+      "answers": {
+        
+        "a": "Solid iron",
+        "b": "Silicon steel",
+        "c": "Ferrite material",
+        "d": "Amorphous metal"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -33,6 +75,25 @@
         "d": "Explanation 2"
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+            
+    {
+      
+      "question": "5. A flyback converter in continuous conduction mode converts 160 V DC to 3.3 V DC. If the duty cycle is 0.40, calculate the turns ratio of the transformer.  Assume negligible voltage drop across switch and diode.",
+      "answers": {
+        "a": "n=1",
+        "b": "n=32:1",
+        "c": "n=1:32",
+        "d": "n=80:1"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
   ]

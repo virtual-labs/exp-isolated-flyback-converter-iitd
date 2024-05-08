@@ -129,8 +129,13 @@ const overPlayer = {
   },
 };
 
+<<<<<<< Updated upstream
 overPlayer.init()
 window.setTimeout(()=>{
+=======
+window.setTimeout(()=>{
+  overPlayer.init()
+>>>>>>> Stashed changes
   overPlayer.onSlidesEnd()
 },2000)
 // overPlayer.onPlayBtn()

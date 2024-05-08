@@ -573,20 +573,49 @@
 .conclusion{
     opacity: 0;
     /* width: 600px; */
+<<<<<<< Updated upstream
     font-size: 17px;
+=======
+    font-size: 13.5px;
+>>>>>>> Stashed changes
     background-color: green!important;
     color: white;
     border-radius: 14px;
     border: 4px dashed white!important;
+<<<<<<< Updated upstream
     padding: 11px;
     /* top: 100px; */
     height: auto;
     left: 10px;
     top:1px;
     width: 537px;
+=======
+    padding: 8px;
+    /* top: 100px; */
+    height: auto;
+    left: 3px;
+    top:-10px;
+    width: 210px;
+>>>>>>> Stashed changes
     z-index: 1;
 }
 
 .temp.graph_labels span{
     margin: 38px;
+<<<<<<< Updated upstream
 } 
+=======
+} 
+
+.btn-img{
+    transition: 0.05s;
+    z-index: 5000;
+}
+.btn-img:hover{
+    filter: brightness(1.1) drop-shadow(1px 1px 1px black); 
+    cursor: pointer;
+}
+.btn-img:active{
+    filter: drop-shadow(0px 0px 0px black);
+}
+>>>>>>> Stashed changes

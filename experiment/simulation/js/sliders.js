@@ -32,6 +32,10 @@ const sliders = {
       width: "fit-content",
       textAlign: "center",
       fontSize: "0.7rem",
+<<<<<<< Updated upstream
+=======
+      padding: "0 5px"
+>>>>>>> Stashed changes
     }
     let st2 = {
       ...st,
@@ -39,7 +43,11 @@ const sliders = {
     }
     // over circuit image output for select options
     let tempTitle30 = new Dom(".temp-title30").set(269,46).setContent("0 V").styles(st)
+<<<<<<< Updated upstream
     let tempTitle31 = new Dom(".temp-title31").set(511,41).setContent("0 R").styles(st)
+=======
+    let tempTitle31 = new Dom(".temp-title31").set(511,41).setContent("0 Ω").styles(st)
+>>>>>>> Stashed changes
     let tempTitle32 = new Dom(".temp-title32").set(351,-1).setContent(":").styles(st2)
 
     let previousOninputFunctions = []
@@ -56,11 +64,26 @@ const sliders = {
           previousOninputFunctions[0]()
         }
         this.selectOp2.oninput = ()=>{
+<<<<<<< Updated upstream
           tempTitle31.setContent(`${this.selectOp2.value} R`)
           previousOninputFunctions[1]()
         }
         this.selectOp3.oninput = ()=>{
           tempTitle32.setContent(`${this.selectOp3.value}`)
+=======
+          tempTitle31.setContent(`${this.selectOp2.value} Ω`)
+          previousOninputFunctions[1]()
+        }
+        this.selectOp3.oninput = ()=>{
+          let ratioValue = ""
+          if(this.selectOp3.value == 2){
+            ratioValue = "1:2"
+          }
+          if(this.selectOp3.value == 0.5){
+            ratioValue = "2:1"
+          }
+          tempTitle32.setContent(`${ratioValue}`)
+>>>>>>> Stashed changes
           previousOninputFunctions[2]()
         }
         break
@@ -72,11 +95,26 @@ const sliders = {
         }
         this.slider.onclick = ()=>{
           previousOninputFunctions[3]()
+<<<<<<< Updated upstream
           tempTitle31.setContent(`${this.slider.value} R`)
         }
         this.selectOp3.oninput = ()=>{
           previousOninputFunctions[2]()
           tempTitle32.setContent(`${this.selectOp3.value}`)
+=======
+          tempTitle31.setContent(`${this.slider.value} Ω`)
+        }
+        this.selectOp3.oninput = ()=>{
+          previousOninputFunctions[2]()
+          let ratioValue = ""
+          if(this.selectOp3.value == 2){
+            ratioValue = "1:2"
+          }
+          if(this.selectOp3.value == 0.5){
+            ratioValue = "2:1"
+          }
+          tempTitle32.setContent(`${ratioValue}`)
+>>>>>>> Stashed changes
         }
     }
   },
@@ -112,9 +150,15 @@ const sliders = {
         genOptions(this.selectOptions[1],[12,24,36])
 
         this.changeHeader(2,"Turns ratio")
+<<<<<<< Updated upstream
         genOptions(this.selectOptions[2],[0.5,2],["1:2","2:1"])
 
         this.setSlider(0.1,0.9,0.01,"D")
+=======
+        genOptions(this.selectOptions[2],[2,0.5],["1:2","2:1"])
+
+        this.setSlider(0.1,0.95,0.01,"D")
+>>>>>>> Stashed changes
         this.enableAll()
         break
 
@@ -128,7 +172,11 @@ const sliders = {
         genOptions(this.selectOptions[1],[0.25,0.50,0.75])
 
         this.changeHeader(2,"Turns ratio")
+<<<<<<< Updated upstream
         genOptions(this.selectOptions[2],[0.5,2],["1:2","2:1"])
+=======
+        genOptions(this.selectOptions[2],[2,0.5],["1:2","2:1"])
+>>>>>>> Stashed changes
 
 
         this.setSlider(10, 200, 1, "R (Ω)")
@@ -145,7 +193,11 @@ const sliders = {
         genOptions(this.selectOptions[1],[12, 24, 36])
 
         this.changeHeader(2,"Turns ratio")
+<<<<<<< Updated upstream
         genOptions(this.selectOptions[2],[0.5,2],["1:2","2:1"])
+=======
+        genOptions(this.selectOptions[2],[2,0.5],["1:2","2:1"])
+>>>>>>> Stashed changes
 
 
         this.setSlider(0.25, 0.75, 0.25, "D")

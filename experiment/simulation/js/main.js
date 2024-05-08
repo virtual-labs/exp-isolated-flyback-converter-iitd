@@ -641,6 +641,12 @@ part1_box1 : new Dom(".part1_box1"),
   graph5=null,
   graph6=null,
   graph7=null,
+<<<<<<< Updated upstream
+=======
+  graph8=null,
+  graph9=null,
+  graph10=null,
+>>>>>>> Stashed changes
  ],
 
  chart: {
@@ -672,6 +678,21 @@ part1_box1 : new Dom(".part1_box1"),
     x: "Label 2",
     y: "Label 1",
   },
+<<<<<<< Updated upstream
+=======
+  label8:{
+    x: "Label 2",
+    y: "Label 1",
+  },
+  label9:{
+    x: "Label 2",
+    y: "Label 1",
+  },
+  label10:{
+    x: "Label 2",
+    y: "Label 1",
+  },
+>>>>>>> Stashed changes
  } 
 
 
@@ -1948,6 +1969,11 @@ part1_box1 : new Dom(".part1_box1"),
     lineHeight: "13px"
   }
   let textLabels = [
+<<<<<<< Updated upstream
+=======
+    // ! iL
+    iL = Scenes.items.tempTitle24.set(891,21).setContent("0 A").styles(st).hide(),
+>>>>>>> Stashed changes
     
     // ! iIn
 
@@ -1988,7 +2014,11 @@ part1_box1 : new Dom(".part1_box1"),
       dutyRatioSlider.min = "0.25";
       dutyRatioSlider.max = "0.75";
       dutyRatioSlider.step = "0.25";
+<<<<<<< Updated upstream
       Scenes.items.slider_D.item.value = "0.25";
+=======
+      get(".slider_D_input").value = "0.25";
+>>>>>>> Stashed changes
       
       let isOneTimeOver = false
       // ! onclick for record
@@ -2007,11 +2037,20 @@ part1_box1 : new Dom(".part1_box1"),
         // setting values from formulas
         function setTempTitleAndValues(showValues=false,vInValue=0){  
     
+<<<<<<< Updated upstream
           let v0 = Number(Formulas.step2.v0(values)).toFixed(1)
           let iIn  = Number(Formulas.step2.iIn(values)).toFixed(1)
 
 
           let textValues = [
+=======
+          let v0 = Number(parseFloat(Formulas.step2.v0(values)).toFixed(1))
+          let iIn  = Number(parseFloat(Formulas.step2.iIn(values)).toFixed(1))
+          let iL = Number(parseFloat( iIn / dutyRatioValue).toFixed(1))
+
+          let textValues = [
+            iLArr = `${ iIn / dutyRatioValue}A`,
+>>>>>>> Stashed changes
 
             iInOn = `${iIn}A`,
             iInOff = `${ 0 }A`,
@@ -2020,6 +2059,7 @@ part1_box1 : new Dom(".part1_box1"),
             vLoff = `${ -v0 / nValue}V`,
 
             vSwon = `${ 0}V`,
+<<<<<<< Updated upstream
             vSwoff = `${ vInValue + v0/nValue}V`,
 
             vDfon = `${ nValue * vInValue + v0}V`,
@@ -2033,6 +2073,20 @@ part1_box1 : new Dom(".part1_box1"),
 
             vC = `${v0}V`,
           ]  
+=======
+            vSwoff = `${ vInValue + (v0/nValue)}V`,
+
+            vDfon = `${ ((nValue * vInValue) + v0)}V`,
+            vDfoff = `${ 0}V`,
+
+            iCon = `${ parseFloat(-v0 / resistanceValue).toFixed(1)}A`,
+            iCoff = `${ parseFloat((iL / nValue) - (v0 /resistanceValue)).toFixed(1)}A`,
+
+            vC = `${v0}V`,
+          ]  
+
+          console.log("values",iL,nValue,v0,resistanceValue)
+>>>>>>> Stashed changes
       
           // also show the all values and graph uppper image
           // Scenes.items.part_2_graph_data_upper.show()
@@ -2206,7 +2260,10 @@ part1_box1 : new Dom(".part1_box1"),
       options[3].item.onclick =  opFour
       rightTicks[3].item.onclick = opFour
 
+<<<<<<< Updated upstream
       options[4].item.onclick =  opFive
+=======
+>>>>>>> Stashed changes
       // ! if all options done then exit
       let exit = true
       for(let i of Scenes.optionsDone){
@@ -2262,11 +2319,19 @@ part1_box1 : new Dom(".part1_box1"),
       let graph_height = 200
       let graph_width = 355
       
+<<<<<<< Updated upstream
       Scenes.items.graph_box_1.set(null, -28, 210)
       Scenes.items.graph1.set(null,null,graph_height,graph_width)
       let ctx = Scenes.items.graph1.item
 
       Scenes.items.graph_box_2.set(null, 190, 220)
+=======
+      Scenes.items.graph_box_1.set(null, -28, 210).zIndex(10)
+      Scenes.items.graph1.set(null,null,graph_height,graph_width)
+      let ctx = Scenes.items.graph1.item
+
+      Scenes.items.graph_box_2.set(null, 190, 220).zIndex(10)
+>>>>>>> Stashed changes
       Scenes.items.graph2.set(null,null,graph_height,graph_width)
       let ctx2 = Scenes.items.graph2.item
 
@@ -2312,12 +2377,20 @@ part1_box1 : new Dom(".part1_box1"),
           color: "black",
           width: "170px", 
           rotate: "-90deg",
+<<<<<<< Updated upstream
         })
+=======
+        }).zIndex(11)
+>>>>>>> Stashed changes
         Scenes.items.xLabel.set(720,160).setContent(xLabel).styles({
           backgroundColor: "transperant",
           color: "black",
           width: "fit-content", 
+<<<<<<< Updated upstream
         })
+=======
+        }).zIndex(11)
+>>>>>>> Stashed changes
         // for label2
         Scenes.items.yLabel2.set(487,60+225).setContent(yLabel2).styles({
           backgroundColor: "transperant",
@@ -2325,12 +2398,20 @@ part1_box1 : new Dom(".part1_box1"),
           color: "black",
           width: "170px", 
           rotate: "-90deg",
+<<<<<<< Updated upstream
         })
+=======
+        }).zIndex(11)
+>>>>>>> Stashed changes
         Scenes.items.xLabel2.set(720,160+225).setContent(xLabel2).styles({
           backgroundColor: "transperant",
           color: "black",
           width: "fit-content", 
+<<<<<<< Updated upstream
         })
+=======
+        }).zIndex(11)
+>>>>>>> Stashed changes
 
         // ! Destroy old graph
         let graphRef = Scenes.items.chart[graphIdx]
@@ -2482,6 +2563,7 @@ part1_box1 : new Dom(".part1_box1"),
       function stepTutorial2(){
 
         Dom.setBlinkArrowRed(true,100-leftMinus,78-topMinus,30,30,90).play()
+<<<<<<< Updated upstream
         setCC("Select Characteristics")
 
         sliders.selectOp1.oninput = ()=>{
@@ -2491,6 +2573,17 @@ part1_box1 : new Dom(".part1_box1"),
           sliders.selectOp2.oninput = ()=>{
             Dom.setBlinkArrowRed(true,380-leftMinus,78-topMinus,30,30,90).play()
             setCC("Select R")
+=======
+        setCC("Select V<sub>in</sub>")
+        
+        sliders.selectOp1.oninput = ()=>{
+          Dom.setBlinkArrowRed(true,240-leftMinus,78-topMinus,30,30,90).play()
+          setCC("Select R")
+        }
+        sliders.selectOp2.oninput = ()=>{
+          Dom.setBlinkArrowRed(true,380-leftMinus,78-topMinus,30,30,90).play()
+          setCC("Select Turns ratio")
+>>>>>>> Stashed changes
           }
             sliders.selectOp3.oninput = ()=>{
               Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
@@ -2533,6 +2626,35 @@ part1_box1 : new Dom(".part1_box1"),
             graphData.push({x: x,y: y})
             graphData2.push({x: x2,y: y2})
           }
+<<<<<<< Updated upstream
+=======
+          // ! setDefault two values in it
+          function setDefaultLowHighInGraph(graphNumber){
+            // D value
+            let low = 0, high = 0.95,x = 0,y = 0
+            updateValues(sliders.selectOp1.value,low,sliders.selectOp2.value)
+            x = low
+            if(graphNumber == 1){
+              y = Number(Formulas.ideal.M(values)).toFixed(2)
+              graphData.unshift({x: x, y: y})
+            }else{
+              y = Number(Formulas.ideal.v0(values)).toFixed(2)
+              graphData2.unshift({x: x, y: y})
+            }
+
+            updateValues(sliders.selectOp1.value,high,sliders.selectOp2.value)
+            x = high
+            if(graphNumber == 1){
+              y = Number(Formulas.ideal.M(values)).toFixed(2)
+              graphData.push({x: x, y: y})
+            }else{
+              y = Number(Formulas.ideal.v0(values)).toFixed(2)
+              graphData2.push({x: x, y: y})
+            }
+          }
+          setDefaultLowHighInGraph(1)
+          setDefaultLowHighInGraph(2)
+>>>>>>> Stashed changes
 
           //for labeling
           let conclusionFront = ""
@@ -2674,6 +2796,10 @@ part1_box1 : new Dom(".part1_box1"),
         // ! for arrow system
         if(recordBtnClickIdx < tableRowMax-1){
           Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
+<<<<<<< Updated upstream
+=======
+          setCC("Select D.")
+>>>>>>> Stashed changes
         }
         else{
           Dom.setBlinkArrowRed(-1)
@@ -2818,11 +2944,19 @@ part1_box1 : new Dom(".part1_box1"),
       let graph_height = 200
       let graph_width = 355
       
+<<<<<<< Updated upstream
       Scenes.items.graph_box_3.set(null, -28, 210)
       Scenes.items.graph3.set(null,null,graph_height,graph_width)
       let ctx = Scenes.items.graph3.item
 
       Scenes.items.graph_box_4.set(null, 190, 220)
+=======
+      Scenes.items.graph_box_3.set(null, -28, 210).zIndex(10)
+      Scenes.items.graph3.set(null,null,graph_height,graph_width)
+      let ctx = Scenes.items.graph3.item
+
+      Scenes.items.graph_box_4.set(null, 190, 220).zIndex(10)
+>>>>>>> Stashed changes
       Scenes.items.graph4.set(null,null,graph_height,graph_width)
       let ctx2 = Scenes.items.graph4.item
 
@@ -2874,10 +3008,17 @@ part1_box1 : new Dom(".part1_box1"),
           color: "black",          
           width: "fit-content",
         }
+<<<<<<< Updated upstream
         Scenes.items.yLabel.set(487,80).setContent(yLabel).styles(yStyle)
         Scenes.items.xLabel.set(700,160).setContent(xLabel).styles(xStyle)        // for label2
         Scenes.items.yLabel2.set(487,80+225).setContent(yLabel2).styles(yStyle)
         Scenes.items.xLabel2.set(700,160+225).setContent(xLabel2).styles(xStyle)
+=======
+        Scenes.items.yLabel.set(487,80).setContent(yLabel).styles(yStyle).zIndex(11)
+        Scenes.items.xLabel.set(700,160).setContent(xLabel).styles(xStyle).zIndex(11)       // for label2
+        Scenes.items.yLabel2.set(487,80+225).setContent(yLabel2).styles(yStyle).zIndex(11)
+        Scenes.items.xLabel2.set(700,160+225).setContent(xLabel2).styles(xStyle).zIndex(11)
+>>>>>>> Stashed changes
 
         // ! Destroy old graph
         let graphRef = Scenes.items.chart[graphIdx]
@@ -3055,6 +3196,7 @@ part1_box1 : new Dom(".part1_box1"),
       function stepTutorial2(){
 
         Dom.setBlinkArrowRed(true,100-leftMinus,78-topMinus,30,30,90).play()
+<<<<<<< Updated upstream
         setCC("Select Characteristics")
 
         sliders.selectOp1.oninput = ()=>{
@@ -3064,6 +3206,17 @@ part1_box1 : new Dom(".part1_box1"),
           sliders.selectOp2.oninput = ()=>{
             Dom.setBlinkArrowRed(true,380-leftMinus,78-topMinus,30,30,90).play()
             setCC("Select R")
+=======
+        setCC("Select V<sub>in</sub>")
+        
+        sliders.selectOp1.oninput = ()=>{
+          Dom.setBlinkArrowRed(true,240-leftMinus,78-topMinus,30,30,90).play()
+          setCC("Select R")
+        }
+        sliders.selectOp2.oninput = ()=>{
+          Dom.setBlinkArrowRed(true,380-leftMinus,78-topMinus,30,30,90).play()
+          setCC("Select Turns ratio")
+>>>>>>> Stashed changes
           }
             sliders.selectOp3.oninput = ()=>{
               Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
@@ -3105,13 +3258,47 @@ part1_box1 : new Dom(".part1_box1"),
           graphData.push({x: x,y: y})
           graphData2.push({x: x2,y: y2})
         }
+<<<<<<< Updated upstream
+=======
+        // ! setDefault two values in it
+        function setDefaultLowHighInGraph(graphNumber){
+          // D value
+          let low = 0.1, high = 0.95,x = 10,y = 10
+
+          updateValues(values.vIn,low,values.R)
+          x = low
+          if(graphNumber == 1){
+            y = Number(Formulas.nonIdeal.M(values,"low1")).toFixed(2)
+            graphData.unshift({x: x, y: y})
+          }else{
+            y = Number(Formulas.nonIdeal.v0(values)).toFixed(2)
+            graphData2.unshift({x: x, y: y})
+          }
+          updateValues(values.vIn,high,values.R)
+          x = high
+          if(graphNumber == 1){
+            y = Number(Formulas.nonIdeal.M(values)).toFixed(2)
+            graphData.push({x: x, y: y})
+          }else{
+            y = Number(Formulas.nonIdeal.v0(values)).toFixed(2)
+            graphData2.push({x: x, y: y})
+          }
+        }
+        setDefaultLowHighInGraph(1)
+        setDefaultLowHighInGraph(2)
+>>>>>>> Stashed changes
 
           // for loop fix
           let conclusionFront = ""
 
           conclusionFront = "Voltage gain and output voltage increases with increasing duty ratio upto certain duty ratio and then starts decreasing. Depending on turns ratio and duty cycle, output voltage is either lower or higher than input voltage."
 
+<<<<<<< Updated upstream
           setCC("Voltage gain and output voltage increases with increasing duty ratio upto certain duty ratio and then starts decreasing. Depending on turns ratio and duty cycle, output voltage is either less or greater than input voltage.",3)
+=======
+          setCC("Voltage gain and output voltage increases with increasing duty ratio upto certain duty ratio and then starts decreasing.")
+          setCC("Depending on turns ratio and duty cycle, output voltage is either less or greater than input voltage.",3)
+>>>>>>> Stashed changes
           
 
           // switch(characteristicsValue){
@@ -3251,6 +3438,10 @@ part1_box1 : new Dom(".part1_box1"),
         // ! for arrow system
         if(recordBtnClickIdx < tableRowMax-1){
           Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
+<<<<<<< Updated upstream
+=======
+          setCC("Select D")
+>>>>>>> Stashed changes
         }
         else{
           Dom.setBlinkArrowRed(-1)
@@ -3271,10 +3462,18 @@ part1_box1 : new Dom(".part1_box1"),
             var rows = table.tBodies[0].rows
 
             let n=8
+<<<<<<< Updated upstream
             for(let i=0;i<n;i++){
                 for(let j=0;j<n-i-1;j++){
                     let val1 = Number(rows[j].cells[8].innerHTML)
                     let val2 = Number(rows[j+1].cells[8].innerHTML)
+=======
+            let sortIndex = 3
+            for(let i=0;i<n;i++){
+                for(let j=0;j<n-i-1;j++){
+                    let val1 = Number(rows[j].cells[sortIndex].innerHTML)
+                    let val2 = Number(rows[j+1].cells[sortIndex].innerHTML)
+>>>>>>> Stashed changes
                     if(val1 > val2){
                         let temp = rows[j].innerHTML
                         rows[j].innerHTML = rows[j+1].innerHTML
@@ -3388,11 +3587,19 @@ part1_box1 : new Dom(".part1_box1"),
         let graph_height = 200
         let graph_width = 355
         
+<<<<<<< Updated upstream
         Scenes.items.graph_box_5.set(null, -28, 210)
         Scenes.items.graph5.set(null,null,graph_height,graph_width)
         let ctx = Scenes.items.graph5.item
 
         Scenes.items.graph_box_6.set(null, 190, 220)
+=======
+        Scenes.items.graph_box_5.set(null, -28, 210).zIndex(10)
+        Scenes.items.graph5.set(null,null,graph_height,graph_width)
+        let ctx = Scenes.items.graph5.item
+
+        Scenes.items.graph_box_6.set(null, 190, 220).zIndex(10)
+>>>>>>> Stashed changes
         Scenes.items.graph6.set(null,null,graph_height,graph_width)
         let ctx2 = Scenes.items.graph6.item
 
@@ -3438,12 +3645,20 @@ part1_box1 : new Dom(".part1_box1"),
             color: "black",
             width: "170px", 
             rotate: "-90deg",
+<<<<<<< Updated upstream
           })
+=======
+          }).zIndex(11)
+>>>>>>> Stashed changes
           Scenes.items.xLabel.set(720,160).setContent(xLabel).styles({
             backgroundColor: "transperant",
             color: "black",
             width: "fit-content", 
+<<<<<<< Updated upstream
           })
+=======
+          }).zIndex(11)
+>>>>>>> Stashed changes
           // for label2
           Scenes.items.yLabel2.set(487,60+225).setContent(yLabel2).styles({
             backgroundColor: "transperant",
@@ -3451,12 +3666,20 @@ part1_box1 : new Dom(".part1_box1"),
             color: "black",
             width: "170px", 
             rotate: "-90deg",
+<<<<<<< Updated upstream
           })
+=======
+          }).zIndex(11)
+>>>>>>> Stashed changes
           Scenes.items.xLabel2.set(720,160+225).setContent(xLabel2).styles({
             backgroundColor: "transperant",
             color: "black",
             width: "fit-content", 
+<<<<<<< Updated upstream
           })
+=======
+          }).zIndex(11)
+>>>>>>> Stashed changes
 
           // ! Destroy old graph
           let graphRef = Scenes.items.chart[graphIdx]
@@ -3608,6 +3831,7 @@ part1_box1 : new Dom(".part1_box1"),
         function stepTutorial2(){
 
           Dom.setBlinkArrowRed(true,100-leftMinus,78-topMinus,30,30,90).play()
+<<<<<<< Updated upstream
           setCC("Select Characteristics")
 
           sliders.selectOp1.oninput = ()=>{
@@ -3621,6 +3845,21 @@ part1_box1 : new Dom(".part1_box1"),
               sliders.selectOp3.oninput = ()=>{
                 Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
                 setCC("Select D")
+=======
+          setCC("Select V<sub>in</sub>")
+          
+          sliders.selectOp1.oninput = ()=>{
+            Dom.setBlinkArrowRed(true,240-leftMinus,78-topMinus,30,30,90).play()
+            setCC("Select D")
+          }
+          sliders.selectOp2.oninput = ()=>{
+            Dom.setBlinkArrowRed(true,380-leftMinus,78-topMinus,30,30,90).play()
+            setCC("Select Turns ratio")
+            }
+              sliders.selectOp3.oninput = ()=>{
+                Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
+                setCC("Select R")
+>>>>>>> Stashed changes
               }
                 sliders.slider.onclick = ()=>{
                   Dom.setBlinkArrowRed(true,730-leftMinus,60-topMinus,30,30,90).play()
@@ -3684,7 +3923,11 @@ part1_box1 : new Dom(".part1_box1"),
           //   Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
           // )
           
+<<<<<<< Updated upstream
           Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
+=======
+          Scenes.items.tempTitle1.addClass("conclusion").set(null,60).setContent(conclusionFront)
+>>>>>>> Stashed changes
           Scenes.items.chart.label5.x = xLabel
           Scenes.items.chart.label5.y = yLabel
 
@@ -3786,6 +4029,10 @@ part1_box1 : new Dom(".part1_box1"),
           
           // ! for arrow system
           if(recordBtnClickIdx < tableRowMax-1){
+<<<<<<< Updated upstream
+=======
+            setCC("Select R")
+>>>>>>> Stashed changes
             Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
           }
           else{
@@ -3917,8 +4164,13 @@ part1_box1 : new Dom(".part1_box1"),
       
        sliders.generateOptionsFor(3)
       //  Scenes.items.part4_table_graph.set(0,160,250,555)
+<<<<<<< Updated upstream
        Scenes.items.new_part_3_4_circuit.set(0,180,190,290)
        Scenes.items.new_part_3_4_ratings.set(290,160,250,280)
+=======
+       Scenes.items.new_part_3_4_circuit.set(0,220,190,290)
+       Scenes.items.new_part_3_4_ratings.set(290,210,250,280)
+>>>>>>> Stashed changes
        //graph labels
        let st_label = {
         backgroundColor: "white",
@@ -3930,10 +4182,17 @@ part1_box1 : new Dom(".part1_box1"),
         
        }
        
+<<<<<<< Updated upstream
        let l1 = "<span>i<sub>s</sub></span> <span>i<sub>d</sub></span> <span>i<sub>c</sub></span>"
        let l2 = "<span>v<sub>s</sub></span> <span>v<sub>d</sub></span> <span>v<sub>c</sub></span>"
        Scenes.items.tempTitle51.set(620,118).setContent(l1).styles(st_label).addClass("graph_labels")
        Scenes.items.tempTitle52.set(620,364).setContent(l2).styles(st_label).addClass("graph_labels")
+=======
+       let l2 = "<span>i<sub>s</sub></span> <span>i<sub>d</sub></span> <span>i<sub>c</sub></span>"
+       let l1 = "<span>v<sub>s</sub></span> <span>v<sub>d</sub></span> <span>v<sub>c</sub></span>"
+       Scenes.items.tempTitle51.set(620,118).setContent(l1).styles(st_label).addClass("graph_labels").zIndex(11)
+       Scenes.items.tempTitle52.set(620,364).setContent(l2).styles(st_label).addClass("graph_labels").zIndex(11)
+>>>>>>> Stashed changes
 
        // temp label for the table
        let st = {
@@ -3945,6 +4204,7 @@ part1_box1 : new Dom(".part1_box1"),
        }
        let leftMinus = 44, topMinus = 25
        let format_1 = "(V<sub>in</sub>+V<sub>o</sub>/n) V/I<sub>in</sub> A"
+<<<<<<< Updated upstream
        let format_2 = "(nV<sub>in</sub>+V<sub>o</sub>) V/I<sub>L,p</sub>/N A"
        let format_3 = "V<sub>o</sub> V/ (∆I<sub>Lm</sub>/2)/N A"
        Scenes.items.tempTitle53.set(443-leftMinus,253-topMinus).setContent(format_1).styles(st)
@@ -3954,6 +4214,17 @@ part1_box1 : new Dom(".part1_box1"),
        
       let graph_box7 = new Dom(".graph_box7")
       let graph_box8 = new Dom(".graph_box8")
+=======
+       let format_2 = "(nV<sub>in</sub>+V<sub>o</sub>) V/I<sub>L,p</sub>/n A"
+       let format_3 = "V<sub>o</sub> V/ (∆I<sub>Lm</sub>/2)/n A"
+       Scenes.items.tempTitle53.set(443-leftMinus,253-topMinus+50).setContent(format_1).styles(st)
+       Scenes.items.tempTitle54.set(443-leftMinus,300-topMinus+50).setContent(format_2).styles(st)
+       Scenes.items.tempTitle55.set(443-leftMinus,355-topMinus+50).setContent(format_3).styles(st3)
+       let graphIdx = 6
+       
+      let graph_box7 = new Dom(".graph_box7").zIndex(10)
+      let graph_box8 = new Dom(".graph_box8").zIndex(10)
+>>>>>>> Stashed changes
       Scenes.items.graph7.set(null,null,250,355)
       Scenes.items.graph8.set(null,200,250,355)
       graph_box7.set()
@@ -4110,6 +4381,7 @@ part1_box1 : new Dom(".part1_box1"),
       function stepTutorial2(){
 
         Dom.setBlinkArrowRed(true,100,78,30,30,90).play() 
+<<<<<<< Updated upstream
         setCC("Select Characteristics")
 
         sliders.selectOp1.oninput = ()=>{
@@ -4119,6 +4391,17 @@ part1_box1 : new Dom(".part1_box1"),
           sliders.selectOp2.oninput = ()=>{
             Dom.setBlinkArrowRed(true,430,78,30,30,90).play()
             setCC("Select R")
+=======
+        setCC("Select V<sub>in</sub>")
+        
+        sliders.selectOp1.oninput = ()=>{
+          Dom.setBlinkArrowRed(true,260,78,30,30,90).play()
+          setCC("Select R")
+        }
+        sliders.selectOp2.oninput = ()=>{
+          Dom.setBlinkArrowRed(true,430,78,30,30,90).play()
+          setCC("Select Turns ratio")
+>>>>>>> Stashed changes
           }
             sliders.selectOp3.oninput = ()=>{
               Dom.setBlinkArrowRed(true,100,140,30,30,90).play()
@@ -4195,6 +4478,7 @@ part1_box1 : new Dom(".part1_box1"),
         updateValues(vInValue,dutyRatioValue,resistanceValue)
  
         // for table data (temp title data)
+<<<<<<< Updated upstream
         let v0 = Number(Formulas.stress.v0(values)).toFixed(2)
         let v0byN = Number(Formulas.stress.v0(values) / nValue).toFixed(2)
         let iIn = Number(Formulas.stress.iIn(values)).toFixed(2)
@@ -4210,6 +4494,24 @@ part1_box1 : new Dom(".part1_box1"),
         let iS = iIn
         let iD = iLMPbyN
         let iC = delILMby2byN
+=======
+        let v0 = parseFloat(Number(Formulas.stress.v0(values)).toFixed(2))
+        let v0byN = parseFloat(Number(Formulas.stress.v0(values) / nValue).toFixed(2))
+        let iIn = parseFloat(Number(Formulas.stress.iIn(values)).toFixed(2))
+        // ! iLMPbyN !/ nValue
+        let iLMPbyN = parseFloat(Number(Formulas.stress.iLMP(values) / nValue).toFixed(2))
+        let delILMby2byN = parseFloat(Number((Formulas.stress.delILM(values) / 2) / nValue).toFixed(2))
+
+        console.log(vInValue,dutyRatioValue,resistanceValue)
+
+        let vS = Number(parseFloat(vInValue) + parseFloat(v0byN)).toFixed(2)
+        let vD = Number((parseFloat(nValue) * parseFloat(vInValue)) + v0).toFixed(2)
+        let vC = Number(v0).toFixed(2)
+
+        let iS = Number(iIn).toFixed(2)
+        let iD = Number(iLMPbyN).toFixed(2)
+        let iC = Number(delILMby2byN).toFixed(2)
+>>>>>>> Stashed changes
 
         Scenes.items.tempTitle53.setContent(`${vS} V/${iS} A`)
         Scenes.items.tempTitle54.setContent(`${vD} V/${iD} A`)
@@ -4227,7 +4529,13 @@ part1_box1 : new Dom(".part1_box1"),
           // after complete
           Dom.setBlinkArrow(true, 790, 408).play();
           // setCC("Click 'Next' to go to next step");
+<<<<<<< Updated upstream
           setCC("Bar chart shows the switch, diode and capacitor voltage stresses. Voltage and current rating of these components must be at least equal to values shown by the bar chart.")
+=======
+          setCC("Bar chart shows the switch, diode and capacitor voltage stresses.")
+
+          setCC("Voltage and current rating of these components must be at least equal to values shown by the bar chart.")
+>>>>>>> Stashed changes
 
           let conclusionFront = "Bar chart shows the switch, diode and capacitor voltage stresses. Voltage and current rating of these components must be at least equal to values shown by the bar chart."
 
@@ -4235,7 +4543,11 @@ part1_box1 : new Dom(".part1_box1"),
           // Anime.fade(
           //   Scenes.items.tempTitle20.set().setContent(conclusionFront).addClass("conclusion").zIndex(3).item
           // )
+<<<<<<< Updated upstream
           Scenes.items.tempTitle20.set().setContent(conclusionFront).addClass("conclusion").zIndex(3).item
+=======
+          Scenes.items.tempTitle20.set(3,143,null,570).setContent(conclusionFront).addClass("conclusion").zIndex(3).item
+>>>>>>> Stashed changes
           
           setIsProcessRunning(false); 
           Scenes.currentStep = 4

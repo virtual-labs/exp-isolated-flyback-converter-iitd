@@ -1988,7 +1988,7 @@ part1_box1 : new Dom(".part1_box1"),
 
     // ! iC
 
-    iCon = Scenes.items.tempTitle34.set(620,293).setContent("0 A").styles(st).hide(),
+    iCon = Scenes.items.tempTitle34.set(620,289).setContent("0 A").styles(st).hide(),
     iCoff = Scenes.items.tempTitle35.set(814,252).setContent("0 A").styles(st).hide(),
 
     // ! vC
@@ -4397,7 +4397,7 @@ part1_box1 : new Dom(".part1_box1"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 1
+Scenes.currentStep = 3
 
 Scenes.next()
 // Scenes.steps[3]()

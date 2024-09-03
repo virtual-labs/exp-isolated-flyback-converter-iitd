@@ -16,3 +16,7 @@
 1) Set the values of Source Voltage (V<sub>in</sub>), Load Resistance (R) and Duty Ratio (D).
 2) Select the “ICONS” in sequence to analyse and understand the circuit operation and performance.
 3) Follow the instructions given in respective experiment slide and press the “RECORD” button to fill the observation table.
+4) Press “Download” button to download the files. <br>
+<center>
+  <img src="images/proced1.png" height="220px">
+</center>

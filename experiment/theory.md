@@ -390,4 +390,10 @@ Simplifying eqn. (19) results in
 <div style="float: right; width:50%; text-align:center;"><br>
     ..(20)
       </div>
-<br><br>
+<br>
+
+<div style="float: left; width:100%;"><br>
+     
+(Voltage gain expression does not include ESR of capacitor r<sub>c</sub>)
+</div>
+

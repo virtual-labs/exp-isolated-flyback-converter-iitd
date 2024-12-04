@@ -8,6 +8,7 @@ const src = {
   // ! new added
   allQsDom: document.querySelectorAll(".qs"),
 
+
   set() {
     this.allItems = {
       arrowRound: this.allImgsDom[0],
@@ -226,6 +227,15 @@ new_part_3_select_option_2:this.allImgsDom[191],
 new_part_3_select_option_3:this.allImgsDom[192],
 new_part_3_select_option_4:this.allImgsDom[193],
 new_part_3_select_option_full:this.allImgsDom[194],
+btn_hint:this.allImgsDom[195],
+hint_box:this.allImgsDom[196],
+hw_result_1_1:this.allImgsDom[197],
+hw_result_2_1:this.allImgsDom[198],
+hw_result_2_2:this.allImgsDom[199],
+hw_result_2_3:this.allImgsDom[200],
+hw_result_2_4:this.allImgsDom[201],
+hw_result_menu:this.allImgsDom[202],
+mask:this.allImgsDom[203],
 
 
 

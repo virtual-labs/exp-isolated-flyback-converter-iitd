@@ -262,6 +262,11 @@ function toggleNextBtn(){
   let nextBtn = document.querySelector(".btn-next")
   nextBtn.classList.toggle("btn-deactive")
 }
+const cancelSpeech = ()=>{
+  window.speechSynthesis.cancel()
+  ccQueue = []
+}
+
 const setIsProcessRunning = (value) => {
   // calling toggle the next
   if(value != isRunning){
@@ -270,10 +275,10 @@ const setIsProcessRunning = (value) => {
 
   isRunning = value;
   if(value){
+    cancelSpeech()
     Dom.hideAll()
   }
 };
-
 const show = (ele, disp = "block", opa = 1) => {
   ele.style.display = disp;
   ele.style.opacity = opa;
@@ -315,13 +320,16 @@ let student_name = "";
 const 
 
 
-textToSpeach = (text) => {
-  // if(isMute){
-  //   return;
-  // }
+textToSpeach = (text,speak=true) => {
+  // for filter <sub></sub>
+  text = text.replaceAll("<sub>"," ").replaceAll("</sub>"," ")
   let utterance = new SpeechSynthesisUtterance();
   utterance.text = text;
   utterance.voice = window.speechSynthesis.getVoices()[0];
+  if(isMute || !speak){
+    utterance.volume = 0
+    utterance.rate = 10
+  }
   window.speechSynthesis.speak(utterance);
   return utterance;
 };
@@ -330,7 +338,7 @@ textToSpeach = (text) => {
 let ccQueue = [];
 // for subtitile
 let ccObj = null;
-function setCC(text = null, speed = 25) {
+function setCC(text = null, speed = 25, speak = true) {
   if (ccObj != null) {
     ccObj.destroy();
   }
@@ -341,14 +349,14 @@ function setCC(text = null, speed = 25) {
     strings: ["", ...ccQueue],
     typeSpeed: speed,
     onStringTyped(){
-      ccQueue.shift();
+      ccQueue.shift()
       // if(ccQueue.length != 0){
-      //   setCC(ccQueue.shift())
+      //   setCC(ccQueue.shift())`
       // }
     }
   });
-  if (!isMute) textToSpeach(text);
-  return ccDom;
+  let utterance = textToSpeach(text,speak)
+  return utterance
 }
    
 // * for cursor pointer
@@ -593,10 +601,14 @@ part_3_option_5 : new Dom("part_3_option_5"),
 part1_crrct_text : new Dom("part1_crrct_text"),
 part1_incrrct_text : new Dom("part1_incrrct_text"),
 part1_crrct_circuit : new Dom("part1_crrct_circuit"),
+
+btn_hint: new Dom("btn_hint"),
+hint_box: new Dom("hint_box"),
 ee3_btn_check : new Dom(".ee3-btn-check"),
 ee3_btn_reset : new Dom(".ee3-btn-reset"),
 ee3_btn_hint : new Dom(".ee3-btn-hint"),
 part4_table_graph : new Dom("part4_table_graph"),
+
 
 //ee3 symbol imgs added
 
@@ -617,8 +629,13 @@ part1_box1 : new Dom(".part1_box1"),
 
 
 
-
-     
+hw_result_1_1 : new Dom("hw_result_1_1"),
+hw_result_2_1 : new Dom("hw_result_2_1"),
+hw_result_2_2 : new Dom("hw_result_2_2"),
+hw_result_2_3 : new Dom("hw_result_2_3"),
+hw_result_2_4 : new Dom("hw_result_2_4"),
+hw_result_menu : new Dom("hw_result_menu"),
+mask : new Dom("mask"),
         
 
 // ! new items dom
@@ -731,6 +748,8 @@ part1_box1 : new Dom(".part1_box1"),
       case 3: heading.setContent("Losses And Efficiency")
       break;
       case 4: heading.setContent("Component Stress")
+      break;
+      case 6: heading.setContent("Experimental Result")
       break;
     }
   },
@@ -858,755 +877,6 @@ part1_box1 : new Dom(".part1_box1"),
         
       return true;
     }),  
-    // (step1 = function () {
-    //   setIsProcessRunning(true)
-    //   // to hide previous step
-    //   Dom.hideAll()
-    //   Scenes.items.projectIntro.hide()
-    //   Dom.setBlinkArrow(-1)
-    //   Dom.setBlinkArrowRed(-1)
-    //   Scenes.items.btn_next.show()
-    //   Scenes.items.slider_box.hide()
-
-    //   Scenes.setStepHeading("Step-1", "Circuit Formulation");
-
-    //   // temp text load source
-    //   let st = {
-    //     color: "red",
-    //     fontSize: "20px",
-    //   }
-    //   let st2 = {
-    //     width: "250px",
-    //     fontSize: "20px",
-    //     color: "red",
-    //     textAlign: "center",
-    //     backgroundColor: "white",
-    //     padding: "10px",
-    //     borderRadius: "12px"
-    //   }
-    //   // ! Show Text
-    //   let textSelectBox = 'Select the "box"'
-    //   let textSelectComponent = 'Select the "component" to be placed in the box'
-    //   Scenes.items.tempTitle17.set(675,320).setContent("Load").styles(st)
-    //   Scenes.items.tempTitle18.set(25,270).setContent("Source").styles(st)
-
-    //   let frontText = Scenes.items.tempTitle19.set(680).setContent(textSelectBox).styles(st2)
-    //   Anime.fadeIn(frontText.item,0.5)
-    //   setCC(textSelectBox)
-
-    //   function showFrontText(isBox){
-    //     if(isBox){
-    //       setCC(textSelectComponent)
-    //       frontText.setContent(textSelectComponent)
-    //     }else{
-    //       frontText.setContent(textSelectBox)
-    //       setCC(textSelectBox)
-    //     }
-    //   }
-    //   let checkCnnctn = "";
-    //   let wrongNoTimes = "";
-
-    //   let reset = function(){
-    //         Dom.setBlinkArrowRed(-1)
-    //         frontText.show()
-    //         showFrontText(false)
-            
-    //         Scenes.items.part1_circuit.set(140,180,220)
-    //         Scenes.items.box2.set(213,143,80,90).zIndex(2)
-    //         Scenes.items.box4.set(410,143,80,90).zIndex(2)
-    //         Scenes.items.box1.set(96,248,90).zIndex(2)
-    //         Scenes.items.box3.set(317,248,90).zIndex(2)
-    //         Scenes.items.box5.set(515,248,90).zIndex(2)
-    //         Scenes.items.box6.set(612,248,90).zIndex(2)
-      
-      
-    //         // symbols required position
-    //         Scenes.items.symbol_vIn.set(40,-20, 60).zIndex(5)
-    //         Scenes.items.symbol_L.set(208,-20, 60).zIndex(5)
-    //         Scenes.items.symbol_C.set(208 + 150,-25, 60).zIndex(5)
-    //         Scenes.items.symbol_S.set(208 + 150 + 50,-40, 60).zIndex(5)
-    //         Scenes.items.symbol_D.set(208 + 150 + 270,-25, 55).zIndex(5)
-    //         Scenes.items.symbol_R.set(208 + 150 + 350,-30, 55).zIndex(5)
-            
-    //         //!Correct positons      
-    //         let st = { rotate: "0deg" }
-    //         Scenes.items.part1_component_voltage.set(5+40,-20,152,73).styles(st).zIndex(3)
-    //         Scenes.items.part1_component_inductor.set(85+70,-20,116).styles(st).zIndex(3)
-    //         Scenes.items.part1_component_capacitor.set(85+190+70,-20,141).styles(st).zIndex(3)
-    //         Scenes.items.part1_component_mosfet.set(440,-10, 150).styles(st).zIndex(3)
-    //         Scenes.items.part1_component_diode.set(85+190+270+70,-20,136).styles(st).zIndex(3)
-    //         Scenes.items.part1_component_resistance.set(85+190+350+70,-31,149).styles(st).zIndex(3)
-          
-
-    //       Scenes.items.part1_incrrct_text.set(10,40, null, 790).hide()
-
-    //       ee3_btn_check.classList.add("btn-deactive")
-
-    //       resetActive = "";
-    //       checkCnnctn = "";
-    //       // wrongNoTimes = "";
-
-    //       for(let i in boxAnimes){
-    //         boxAnimes[i].pause();
-    //       }
-  
-    //     // Scenes.steps[2]()  
-    //   }
-
-    //   let check = function(){
-    //     Dom.setBlinkArrowRed(-1)
-    //     console.log(checkCnnctn)
-    //     if(checkCnnctn == "111111"){
-    //     Scenes.items.part1_crrct_text.set(10,40, null, 790)
-    //       // after complete
-    //       Dom.setBlinkArrow(true, 790, 408).play()
-    //       setCC("Click 'Next' to go to next step")
-    //       setIsProcessRunning(false)
-    //     }
-    //     else{
-    //       Scenes.items.part1_incrrct_text.set(10,40, null, 790) 
-    //       wrongNoTimes+="1";
-    //       if(wrongNoTimes == "1"){
-    //         Dom.setBlinkArrowRed(true,882,-18,30,30,90).play()
-    //         ee3_btn_hint.classList.remove("btn-deactive")
-    //         frontText.hide()
-    //       }
-    //       console.log("wrong no. of times",wrongNoTimes)
-    //         }
-    //   }
-
-    //   let boxAnimes = [];
-
-
-    //   //function to blink boxes to different color
-    //   function boxAnime(){
-    //     var myObject = {
-    //       prop1: 0,
-    //       prop2: 0,
-    //       prop3: 0,
-    //       prop4: 0,
-    //       prop5: 0,
-    //       prop6: 0,
-    //     }
-        
-    //     let boxBlink_1 = anime({
-    //       targets: myObject,
-    //       prop1: 360,
-    //       easing: 'linear',
-    //       round: 1000,
-    //       update: function() {
-    //         box1.item.style.filter = `hue-rotate(${(myObject.prop1)}deg)`;
-    //       },
-    //       loop: true,
-    //       autoplay: false,
-
-    //     });
-    //     let boxBlink_2 = anime({
-    //       targets: myObject,
-    //       prop2: 360,
-    //       easing: 'linear',
-    //       round: 1000,
-    //       update: function() {
-    //         box2.item.style.filter = `hue-rotate(${(myObject.prop2)}deg)`;
-    //       },
-    //       autoplay: false,
-    //       loop: true,
-
-    //     });
-    //     let boxBlink_3 = anime({
-    //       targets: myObject,
-    //       prop3: 360,
-    //       easing: 'linear',
-    //       round: 1000,
-    //       update: function() {
-    //         box3.item.style.filter = `hue-rotate(${(myObject.prop3)}deg)`;
-    //       },
-    //       autoplay: false,
-    //       loop: true,
-
-    //     });
-    //     let boxBlink_4 = anime({
-    //       targets: myObject,
-    //       prop4: 360,
-    //       easing: 'linear',
-    //       round: 1000,
-    //       update: function() {
-    //         box4.item.style.filter = `hue-rotate(${(myObject.prop4)}deg)`;
-    //       },
-    //       autoplay: false,
-    //       loop: true,
-
-    //     });
-    //     let boxBlink_5 = anime({
-    //       targets: myObject,
-    //       prop5: 360,
-    //       easing: 'linear',
-    //       round: 1000,
-    //       update: function() {
-    //         box5.item.style.filter = `hue-rotate(${(myObject.prop5)}deg)`;
-    //       },
-    //       autoplay: false,
-    //       loop: true,
-
-    //     });
-    //     let boxBlink_6 = anime({
-    //       targets: myObject,
-    //       prop6: 360,
-    //       easing: 'linear',
-    //       round: 1000,
-    //       update: function() {
-    //         box6.item.style.filter = `hue-rotate(${(myObject.prop6)}deg)`;
-    //       },
-    //       autoplay: false,
-    //       loop: true,
-
-    //     });
-
-    //      boxAnimes = [boxBlink_1, boxBlink_2, boxBlink_3, boxBlink_4, boxBlink_5, boxBlink_6]
-    //   }
-
-    //   let ee3_btn_check = Scenes.items.ee3_btn_check.set(720-80,-70,null, 90).item
-    //   let ee3_btn_reset = Scenes.items.ee3_btn_reset.set(720-80+100,-70, null, 90).item
-    //   let ee3_btn_hint =  Scenes.items.ee3_btn_hint.set(720-80+200,-70, null, 90).item
-      
-      
-    //   ee3_btn_check.classList.add("btn-deactive")
-    //   ee3_btn_hint.classList.add("btn-deactive")
-
-
-    //   ee3_btn_check.onclick = check
-    //   ee3_btn_reset.onclick = reset
-
-    //   let isShow = 0;
-    //   Scenes.items.part1_crrct_circuit.set(20,-20, 450).zIndex(10).hide()
-    //   ee3_btn_hint.onclick = () => {
-    //     Dom.setBlinkArrowRed(-1)
-    //     if(!isShow){
-    //       Scenes.items.part1_crrct_circuit.show()
-    //       isShow = 1;
-    //     }else{
-    //       Scenes.items.part1_crrct_circuit.hide()
-    //       isShow = 0
-    //     }
-    //   }
-
-
-    //   //! Required items 
-
-
-    //   // Dom.setBlinkArrowRed(true,100,78,30,30,90).play()
-
-    //   Scenes.items.part1_circuit.set(140,180,220)
-    //   Scenes.items.box2.set(213,143,80,90).zIndex(2)
-    //   Scenes.items.box4.set(410,143,80,90).zIndex(2)
-    //   Scenes.items.box1.set(96,248,90).zIndex(2)
-    //   Scenes.items.box3.set(317,248,90).zIndex(2)
-    //   Scenes.items.box5.set(515,248,90).zIndex(2)
-    //   Scenes.items.box6.set(612,248,90).zIndex(2)
-
-
-    //   // symbols required position
-    //   Scenes.items.symbol_vIn.set(40,-20, 60).zIndex(5)
-    //   Scenes.items.symbol_L.set(208,-20, 60).zIndex(5)
-    //   Scenes.items.symbol_C.set(208 + 150,-25, 60).zIndex(5)
-    //   Scenes.items.symbol_S.set(208 + 150 + 50,-40, 60).zIndex(5)
-    //   Scenes.items.symbol_D.set(208 + 150 + 270,-25, 55).zIndex(5)
-    //   Scenes.items.symbol_R.set(208 + 150 + 350,-30, 55).zIndex(5)
-      
-    //   //!Correct positons      
-    //   Scenes.items.part1_component_voltage.set(5+40,-20,152,73).rotate(0).zIndex(3)
-    //   Scenes.items.part1_component_inductor.set(85+70,-20,116).rotate(0).zIndex(3)
-    //   Scenes.items.part1_component_capacitor.set(85+190+70,-20,141).rotate(0).zIndex(3)
-    //   Scenes.items.part1_component_mosfet.set(440,-10, 150).rotate(0).zIndex(3)
-    //   Scenes.items.part1_component_diode.set(85+190+270+70,-20,136).rotate(0).zIndex(3)
-    //   Scenes.items.part1_component_resistance.set(85+190+350+70,-31,149).rotate(0).zIndex(3)
-
-      
-    //       let compo = {
-    //         box : null,
-    //         item : null,
-  
-    //       }
-    //   // !box clicked
-
-    //   boxAnime();
-
-  
-    //   let box1 = Scenes.items.box1
-    //   box1.item.onclick = ()=>{
-    //     boxAnimes[0].play();
-    //     console.log("box1 clicked")
-    //     compo.box = box1
-    //     // added text
-    //     showFrontText(true)
-    //   }
-    //   let box2 = Scenes.items.box2
-    //   box2.item.onclick = ()=>{
-    //     boxAnimes[1].play();
-    //     console.log("box2 clicked")
-    //     compo.box = box2
-    //     // added text
-    //     showFrontText(true)
-    //   }
-    //   let box3 = Scenes.items.box3
-    //   box3.item.onclick = ()=>{
-    //     boxAnimes[2].play();
-    //     console.log("box3 clicked")
-    //     compo.box = box3
-    //     // added text
-    //     showFrontText(true)
-    //   }
-    //   let box4 = Scenes.items.box4
-    //   box4.item.onclick = ()=>{
-    //     boxAnimes[3].play();
-    //     console.log("box4 clicked")
-    //     compo.box = box4
-    //     // added text
-    //     showFrontText(true)
-    //   }
-    //   let box5 = Scenes.items.box5
-    //   box5.item.onclick = ()=>{
-    //     boxAnimes[4].play();
-    //     console.log("box5 clicked")
-    //     compo.box = box5
-    //     // added text
-    //     showFrontText(true)
-    //   }
-    //   let box6 = Scenes.items.box6
-    //   box6.item.onclick = ()=>{
-    //     boxAnimes[5].play();
-    //     console.log("box6 clicked")
-    //     compo.box = box6
-    //     // added text
-    //     showFrontText(true)
-    //   }
-
-    //   //item click
-    //   let item1 = Scenes.items.part1_component_voltage
-    //   item1.item.onclick = ()=>{
-    //     console.log("item1 clicked")
-    //     compo.item = item1
-    //     toSet();
-    //     // added text
-    //     showFrontText(false)
-    //   }
-    //   let item2 = Scenes.items.part1_component_inductor
-    //   item2.item.onclick = ()=>{
-    //     console.log("item2 clicked")
-    //     compo.item = item2
-    //     toSet();
-    //     // added text
-    //     showFrontText(false)
-    //   }
-    //   let item3 = Scenes.items.part1_component_capacitor
-    //   item3.item.onclick = ()=>{
-    //     console.log("item3 clicked")
-    //     compo.item = item3
-    //     toSet();
-    //     // added text
-    //     showFrontText(false)
-    //   }
-    //   let item4 = Scenes.items.part1_component_mosfet
-    //   item4.item.onclick = ()=>{
-    //     console.log("item4 clicked")
-    //     compo.item = item4
-    //     toSet();
-    //     // added text
-    //     showFrontText(false)
-    //   }
-    //   let item5 = Scenes.items.part1_component_diode
-    //   item5.item.onclick = ()=>{
-    //     console.log("item5 clicked")
-    //     compo.item = item5
-    //     toSet();
-    //     // added text
-    //     showFrontText(false)
-    //   }
-    //   let item6 = Scenes.items.part1_component_resistance
-    //   item6.item.onclick = ()=>{
-    //     console.log("item6 clicked")
-    //     compo.item = item6
-    //     toSet();
-    //     // added text
-    //     showFrontText(false)
-    //   }
-
-    //   let resetActive = "";
-
-    // //! function to set the element
-    // let toSet = function(){
-    //   resetActive += "1";
-      
-    //   console.log(resetActive)
-
-    //   if(resetActive == "111111"){
-    //     Dom.setBlinkArrowRed(true,690,-18,30,30,90).play()
-    //     ee3_btn_check.classList.remove("btn-deactive")
-    //     boxAnimes.forEach(animeObj=>{
-    //       animeObj.pause()
-    //     })
-    //   }
-    
-      
-    //   let boxName = compo.box
-    //   let itemName = compo.item
-
-    //   function toSetItem (target, left_=null, top_=null, height_=null, width_=null){
-    //     anime({
-    //       targets: target.item,
-    //       duration: 1000,
-    //       easing: "easeInOutQuad",
-    //       height: height_,
-    //       width: width_, 
-    //       left: left_,
-    //       top : top_
-    //     })
-    //   }
-    //   function toSetSymbol (target, left_ = null, top_ = null){
-    //     anime({
-    //       targets: target.item,
-    //       duration: 1000,
-    //       easing: "easeInOutQuad",
-    //       left: left_,
-    //       top : top_
-    //     })
-    //   }
-
-    //   let vIn = Scenes.items.symbol_vIn
-    //   let L = Scenes.items.symbol_L
-    //   let C = Scenes.items.symbol_C
-    //   let S = Scenes.items.symbol_S
-    //   let D = Scenes.items.symbol_D
-    //   let R = Scenes.items.symbol_R
-      
-    //   //!if item1 clicked
-    //   if(itemName == item1 && boxName == box1){
-    //     box1.hide()
-    //     toSetItem(item1, 113.4, 191)
-    //     toSetSymbol(vIn, 77, 183 )
-    //     // item1.set(118.5,178,150)
-    //     checkCnnctn+="1"
-    //     console.log(checkCnnctn)
-
-    //   }
-    //   if(itemName == item1 && boxName == box2){
-    //     item1.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box2.hide()
-    //     // item1.set(242,73,225)
-    //     toSetItem(item1, 250,110.5)
-    //     toSetSymbol(vIn, 219, 205)
-
-    //   }
-    //   if(itemName == item1 && boxName == box3){
-    //       box3.hide()
-    //     // item1.set(307, 193,150)
-    //     toSetItem(item1, 324.4, 193,150)
-    //     toSetSymbol(vIn, 272, 256)
-    //   }
-    //   if(itemName == item1 && boxName == box4){
-    //     item1.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box4.hide()
-    //     // item1.set(415, 109)
-    //     toSetItem(item1, 450, 110.5)
-    //     toSetSymbol(vIn, 397, 204)
-
-    //   }
-    //   if(itemName == item1 && boxName == box5){
-    //     box5.hide()
-    //     // item1.set(485, 194)
-    //     toSetItem(item1, 521.8, 194)
-    //     toSetSymbol(vIn, 462, 256)
-        
-    //   }
-    //   if(itemName == item1 && boxName == box6){
-    //         box6.hide()
-    //     // item1.set(588, 194)
-    //     toSetItem(item1, 606.4, 194)
-    //     toSetSymbol(vIn, 665, 267)
-    //   }
-
-    //   //!if item2 clicked
-    //   if(itemName == item2 && boxName == box1){
-    //     item2.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box1.hide()
-    //     // item2.set(100, 212)
-    //     toSetItem(item2, 101.7, 258)
-    //     toSetSymbol(L, 61, 251)
-    //   }
-    //   if(itemName == item2 && boxName == box2){
-    //     box2.hide()
-    //     toSetItem(item2, 200, 94)
-    //     toSetSymbol(L, 226, 209)
-
-    //     // item2.set(171, 90)
-    //   }
-    //   if(itemName == item2 && boxName == box3){
-    //     item2.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box3.hide()
-    //     // item2.set(288, 230)
-    //     toSetItem(item2, 312.5, 258)
-    //     toSetSymbol(L, 288, 256)
-    //   }
-    //   if(itemName == item2 && boxName == box4){
-    //     box4.hide()
-    //     toSetItem(item2, 400, 94)
-    //     toSetSymbol(L, 393, 208)
-    //     // item2.set(339, 90)
-    //     checkCnnctn+="1"
-    //     console.log(checkCnnctn)
-
-    //   }
-    //   if(itemName == item2 && boxName == box5){
-    //     item2.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box5.hide()
-    //     toSetItem(item2, 510.5, 258)
-    //     toSetSymbol(L, 488, 256)
-
-    //     // item2.set(467, 230)
-
-    //   }
-    //   if(itemName == item2 && boxName == box6){
-    //     item2.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box6.hide()
-    //     toSetItem(item2, 594.5, 258)
-    //     toSetSymbol(L, 665, 267)
-
-    //     // item2.set(569, 230)
-    //   }
-
-      
-    //   //! if item3 clicked
-    //   if(itemName == item3 && boxName == box1){
-    //     box1.hide()
-    //     // item3.set(129, 195)
-    //     toSetItem(item3, 125, 206)
-    //     toSetSymbol(C, 143, 191)
-    //   }
-    //   if(itemName == item3 && boxName == box2){
-    //     item3.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box2.hide()
-    //     // item3.set(235,133)
-    //     toSetItem(item3, 238,127.7)
-    //     toSetSymbol(C, 280, 180)
-
-    //   }
-    //   if(itemName == item3 && boxName == box3){
-    //     box3.hide()
-    //     // item3.set(318, 213)
-    //     toSetItem(item3, 335.8, 206)
-    //     toSetSymbol(C, 288, 256)
-    //   }
-    //   if(itemName == item3 && boxName == box4){
-    //     item3.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box4.hide()
-    //     // item3.set(399, 133)
-    //     toSetItem(item3, 438,127.7)
-    //     toSetSymbol(C, 455, 185)
-    //   }
-    //   if(itemName == item3 && boxName == box5){
-    //     box5.hide()
-    //     // item3.set(496, 213)
-    //     toSetItem(item3, 533.4, 206)
-    //     toSetSymbol(C, 488, 256)
-    //     checkCnnctn+="1"
-    //     console.log(checkCnnctn)
-
-    //   }
-    //   if(itemName == item3 && boxName == box6){
-    //     box6.hide()
-    //     toSetItem(item3, 617.9, 206)
-    //     toSetSymbol(C, 665, 267)
-
-    //     // item3.set(599, 213)
-    //   }
-
-    //    //! if item4 clicked
-    //    if(itemName == item4 && boxName == box1){
-    //     item4.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box1.hide()
-    //     toSetItem(item4, 36, 220)
-    //     toSetSymbol(S, 148, 201)
-    //     // item4.set(55, 205)
-    //  }
-    //   if(itemName == item4 && boxName == box2){
-    //     box2.hide()
-    //     toSetItem(item4, 184, 135)
-    //     toSetSymbol(S, 167, 121)
-
-    //     // item4.set(171, 124)
-    //     checkCnnctn+="1"
-    //     console.log(checkCnnctn)
-
-
-    //   }
-    //   if(itemName == item4 && boxName == box3){
-    //     item4.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box3.hide()
-    //     toSetItem(item4, 247, 220)
-    //     toSetSymbol(S, 299, 200)
-
-    //     // item4.set(243, 221)
-
-    //   }
-    //   if(itemName == item4 && boxName == box4){
-    //     box4.hide()
-    //     toSetItem(item4, 384, 135)
-    //     toSetSymbol(S, 366, 123)
-
-    //     // item4.set(346, 124)
-    //   }
-    //   if(itemName == item4 && boxName == box5){
-    //     item4.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box5.hide()
-    //     toSetItem(item4, 444, 220)
-    //     toSetSymbol(S, 490, 200)
-
-    //     // item4.set(420, 221)
-    //   }
-    //   if(itemName == item4 && boxName == box6){
-    //     item4.styles({
-    //       rotate: "-90deg"
-    //     })
-    //     box6.hide()
-    //     toSetItem(item4, 579.9, 220)
-    //     toSetSymbol(S, 580, 210)
-
-    //     // item4.set(525, 221)
-    //   }
-
-    //   // ! if item5 clicked
-    //   if(itemName == item5 && boxName == box1){
-    //     box1.hide()
-    //     toSetItem(item5,130.6, 220)
-    //     toSetSymbol(D, 143, 214)
-    //     // item5.set(134, 214)
-    //   }
-    //   if(itemName == item5 && boxName == box2){
-    //     item5.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box2.hide()
-    //     toSetItem(item5, 222, 138)
-    //     toSetSymbol(D, 261, 184)
-
-    //     // item5.set(222, 144)
-    //   }
-    //   if(itemName == item5 && boxName == box3){
-    //         box3.hide()
-    //     // item5.set(322, 230)
-    //     toSetItem(item5, 341.4, 220)
-    //     toSetSymbol(D, 288, 256)
-    //     checkCnnctn+="1"
-    //     console.log(checkCnnctn)
-
-    //   }
-    //   if(itemName == item5 && boxName == box4){
-    //     item5.styles({
-    //       rotate: "90deg"
-    //     })
-    //       box4.hide()
-    //     // item5.set(387, 144)
-    //     toSetItem(item5, 422, 138)
-    //     toSetSymbol(D, 462, 182)
-
-    //   }
-    //   if(itemName == item5 && boxName == box5){
-    //         box5.hide()
-    //         toSetItem(item5, 539, 220)
-    //       toSetSymbol(D, 488, 256)
-
-    //     // item5.set(500, 230)
-    //   }
-    //   if(itemName == item5 && boxName == box6){
-    //       box6.hide()
-    //       toSetItem(item5, 623.5, 220)
-    //     toSetSymbol(D, 655, 267)
-
-    //     // item5.set(604, 230)
-    //   }
-
-
-    //   //! if item6 clicked
-    //   if(itemName == item6 && boxName == box1){
-    //     box1.hide()
-    //     toSetItem(item6, 130, 206)
-    //     toSetSymbol(R, 139, 195)
-    //     // item6.set(132, 198)
-    //   }
-    //   if(itemName == item6 && boxName == box2){
-    //     item6.styles({
-    //       rotate: "90deg"
-    //     })
-    //     box2.hide()
-    //     toSetItem(item6, 239, 124.5)
-    //     toSetSymbol(R, 278, 188)
-    //     // item6.set(239, 129)
-    //   }
-    //   if(itemName == item6 && boxName == box3){
-    //         box3.hide()
-    //     // item6.set(321, 214)
-    //     toSetItem(item6, 340.8, 206)
-    //     toSetSymbol(R, 288, 256)
-    //   }
-    //   if(itemName == item6 && boxName == box4){
-    //     item6.styles({
-    //       rotate: "90deg"
-    //     })
-    //       box4.hide()
-    //       toSetItem(item6, 439, 124.5)
-    //       toSetSymbol(R, 451, 198)
-    //       // item6.set(402, 129)
-    //   }
-    //   if(itemName == item6 && boxName == box5){
-    //         box5.hide()
-    //         toSetItem(item6, 538.4, 206)
-    //         toSetSymbol(R, 488, 256)
-
-    //     // item6.set(498, 214)
-    //   }
-    //   if(itemName == item6 && boxName == box6){
-    //         box6.hide()
-    //         toSetItem(item6, 622.9, 206)
-    //         toSetSymbol(R, 655, 267)
-    //         // item6.set(601, 214)
-    //         checkCnnctn+="1"
-    //   }
-      
-    //   compo.box  = null
-    //   compo.item  = null
-
-    // }
-    //   // ------ end
-
-
-
-    //   return true
-    // }),
-
-
-
     (step1 = function () {
       setIsProcessRunning(true);
       // to hide previous step
@@ -1731,6 +1001,18 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.new_component_transformer.set(458, -8, 95).zIndex(5)
       Scenes.items.new_component_capacitor.set(646, -33, 144).zIndex(5) 
       Scenes.items.new_component_diode.set(765, 27, 100).zIndex(5)
+
+      //! hint button code
+      Scenes.items.btn_hint.set(855, -77, 40).zIndex(10)
+      Scenes.items.hint_box.set(236, -60, 322).zIndex(10).hide()
+
+     let hint_btn = Scenes.items.btn_hint;
+      hint_btn.item.onmouseenter = ()=>{
+        Scenes.items.hint_box.show()
+      }
+      hint_btn.item.onmouseout = ()=>{
+        Scenes.items.hint_box.hide()
+      }
  
       Scenes.items.slider_box.hide()
 
@@ -2103,14 +1385,13 @@ part1_box1 : new Dom(".part1_box1"),
     }),
     (step3 = function () {
       setIsProcessRunning(true);
-      Scenes.items.btn_next.show()
       
       // todo all previous elements hide
       Dom.hideAll();
+      Scenes.items.btn_next.show()
       Scenes.items.contentAdderBox.item.innerHTML = ""
 
       Scenes.setStepHeading("Step-3", "Performance Analysis.");
-      setCC("Click on the 'ICON' to plot the performance characteristics.")
       
       // * remove all previous restrictions
       
@@ -2233,10 +1514,13 @@ part1_box1 : new Dom(".part1_box1"),
       }      
 
       if(exit){
-        // after complete
-        // Dom.setBlinkArrow(true, 790, 408).play();
-        setCC("Simulation Done");
+        setCC("Click 'Next' to go to next step");
+        Dom.setBlinkArrow(true, 790, 410).play();
         setIsProcessRunning(false);
+        Scenes.currentStep = 8
+      } else{
+        setCC("Click on the 'ICON' to plot the performance characteristics.")
+
       }
 
       return true;
@@ -4328,8 +3612,224 @@ part1_box1 : new Dom(".part1_box1"),
       
       return true
     }),
+
+     //! HW Result Start - Menu
+     (step8 = function () {
+      setIsProcessRunning(true);
+      // to hide previous step
+      Dom.hideAll();
+      Scenes.items.slider_box.hide()
+
+      Scenes.items.btn_next.show()
+      // Scenes.changeHeader(6, -285, 28)
+
+      //! Required positions
+      Scenes.items.hw_result_menu.set(0,-48, 500, 950)
+      let mask = Scenes.items.mask;
+      Scenes.changeHeader(6, -285, 28)
+
+      // Option
+      if(Scenes.optionsDone[0] == 0){
+        Dom.maskClick(mask, ()=>{
+          setIsProcessRunning(false)
+          Scenes.currentStep = 11
+          Scenes.next()
+        }, 728, 158, 62, 172)
+        setCC("Click on the Voltage and current waveform")
+      } else{
+        Dom.maskClick(mask, ()=>{
+          setIsProcessRunning(false)
+          Scenes.optionsDone[0] = 0
+          Scenes.next()
+        }, 728, 79, 39, 157)
+        setCC("Click on the Load Voltage")
+      }
+
+      // Start
+      
+      Dom.setBlinkArrowOnElement(mask, "left").play()
+      // Dom.setBlinkArrowRed(true,100,100)
+
+      return true
+    }),
+
+    // ! Result 1 1
+    (step9 = function () {
+      setIsProcessRunning(true);
+      // to hide previous step
+      Dom.hideAll();
+      Scenes.items.slider_box.hide()
+
+      Scenes.items.btn_next.show()
+      Scenes.changeHeader(6, -285, 28)
+
+      //! Required positions
+      Scenes.items.hw_result_1_1
+        .set(0,-48, 500, 950)
+      let mask = Scenes.items.mask;
+
+      // Start
+      // Dom.maskClick(mask, ()=>{
+      //   setIsProcessRunning(false)
+      //   Scenes.next()
+      // }, 728, 79, 39, 157)
+      // Dom.setBlinkArrowOnElement(mask, "left").play()
+
+      setCC("DC supply voltage of 12 volts is given to flyback converter and duty ratio is varied from 0.1 to 0.9.")
+      setCC("The experimental load voltage variation with duty ratio is displayed here. ").onend = ()=>{
+        setCC("Click 'Next' to go to next step");
+        Dom.setBlinkArrow(true, 790, 410).play();
+        setIsProcessRunning(false);
+        Scenes.currentStep = 9
+      }
+
+
+      return true
+    }),
+
+    // ! Result 2 1
+    (step10 = function () {
+      setIsProcessRunning(true);
+      // to hide previous step
+      Dom.hideAll();
+      Scenes.items.slider_box.hide()
+
+      Scenes.items.btn_next.show()
+      Scenes.changeHeader(6, -285, 28)
+
+      //! Required positions
+      Scenes.items.hw_result_2_1
+        .set(0,-48, 500, 950)
+      let mask = Scenes.items.mask;
+
+      // Start
+      // Dom.maskClick(mask, ()=>{
+      //   setIsProcessRunning(false)
+      //   Scenes.next()
+      // }, 728, 79, 39, 157)
+      // Dom.setBlinkArrowOnElement(mask, "left").play()
+
+      setCC("Here the PWM gate driving signal  given to the MOSFET of flyback converter  is shown.").onend = ()=>{
+        setCC("Click 'Next' to go to next step");
+        Dom.setBlinkArrow(true, 790, 410).play();
+        setIsProcessRunning(false);
+      }
+
+
+      return true
+    }),
+    // ! Result 2 2
+    (step11 = function () {
+      setIsProcessRunning(true);
+      // to hide previous step
+      Dom.hideAll();
+      Scenes.items.slider_box.hide()
+
+      Scenes.items.btn_next.show()
+      Scenes.changeHeader(6, -285, 28)
+
+      //! Required positions
+      Scenes.items.hw_result_2_2
+        .set(0,-48, 500, 950)
+      let mask = Scenes.items.mask;
+
+      // Start
+      // Dom.maskClick(mask, ()=>{
+      //   setIsProcessRunning(false)
+      //   Scenes.next()
+      // }, 728, 79, 39, 157)
+      // Dom.setBlinkArrowOnElement(mask, "left").play()
+
+      setCC("The measured input current waveform is shown here.").onend = ()=>{
+        setCC("Click 'Next' to go to next step");
+        Dom.setBlinkArrow(true, 790, 410).play();
+        setIsProcessRunning(false);
+      }
+
+
+      return true
+    }),
+    // ! Result 2 3
+    (step12 = function () {
+      setIsProcessRunning(true);
+      // to hide previous step
+      Dom.hideAll();
+      Scenes.items.slider_box.hide()
+
+      Scenes.items.btn_next.show()
+      Scenes.changeHeader(6, -285, 28)
+
+      //! Required positions
+      Scenes.items.hw_result_2_3
+        .set(0,-48, 500, 950)
+      let mask = Scenes.items.mask;
+
+      // Start
+      // Dom.maskClick(mask, ()=>{
+      //   setIsProcessRunning(false)
+      //   Scenes.next()
+      // }, 728, 79, 39, 157)
+      // Dom.setBlinkArrowOnElement(mask, "left").play()
+
+      setCC("Here  the voltage across the switch is shown.").onend = ()=>{
+        setCC("Click 'Next' to go to next step");
+        Dom.setBlinkArrow(true, 790, 410).play();
+        setIsProcessRunning(false);
+      }
+
+
+      return true
+    }),
+    // ! Result 2 4
+    (step12 = function () {
+      setIsProcessRunning(true);
+      // to hide previous step
+      Dom.hideAll();
+      Scenes.items.slider_box.hide()
+
+      Scenes.items.btn_next.show()
+      Scenes.changeHeader(6, -285, 28)
+
+      //! Required positions
+      Scenes.items.hw_result_2_4
+        .set(0,-48, 500, 950)
+      let mask = Scenes.items.mask;
+
+      // Start
+      // Dom.maskClick(mask, ()=>{
+      //   setIsProcessRunning(false)
+      //   Scenes.next()
+      // }, 728, 79, 39, 157)
+      // Dom.setBlinkArrowOnElement(mask, "left").play()
+
+      setCC("Here  the voltage across the diode is shown.").onend = ()=>{
+        setTimeout(() => {
+          setCC("Experiment Completed");
+        }, 2000);
+      }
+
+
+      return true
+    }),
  
   ],
+  // ! For adding realcurrentstep in every step
+  // ! For tracking the current step accuratly
+  realCurrentStep: null,
+  setRealCurrentStep(){
+    let count = 0
+    this.steps.forEach((step,idx) => {
+      const constCount = count
+      let newStep = () => {
+        this.realCurrentStep = constCount;
+        console.log(`RealCurrentStep: ${this.realCurrentStep}`)
+        return step();
+      };
+
+      count++;
+      this.steps[idx] = newStep
+    });
+  },
   back() {
     //! animation isRunning
     // if (isRunning) {
@@ -4346,14 +3846,28 @@ part1_box1 : new Dom(".part1_box1"),
     }
   },
   next() {
+    let ignore = true
+    const ignoreDrawerProgress = ()=>{
+      let stepsToIgnore = [5,6,7,8]
+      console.log(this.realCurrentStep)
+      ignore = stepsToIgnore.indexOf(this.realCurrentStep) != -1
+      return 
+    }
+    if(!this.realCurrentStep){
+      Scenes.setRealCurrentStep()
+    }
     //! animation isRunning
     if (isRunning) {
       return
     }
     if (this.currentStep < this.steps.length) {
+      ignoreDrawerProgress()
+
       if (this.steps[this.currentStep]()) {
-        nextDrawerItem();
-        nextProgressBar();
+        if(!ignore){
+          nextDrawerItem();
+          nextProgressBar();
+        }
         this.currentStep++;
       }         
     } else {

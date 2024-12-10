@@ -13,10 +13,10 @@
         "d": "Switch"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "a": "Explanation 1",
         "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "c": "Explanation 3: Explanation: The flyback converter is formulated from buck-boost converter by replacing the inductor with high frequency transformer.",
+        "d": "Explanation 4"
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
@@ -32,10 +32,10 @@
         "d": "<img src='images/pre5.png' height='30px'><br>"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Explanation 1",
+        "b": "Explanation 2: Explanation: By definition of the output voltage expression is <br><img src='images/expl1.png' height='60px'>",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -51,10 +51,10 @@
         "d": "CUK converter"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "a": "Explanation 1",
         "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "c": "Explanation 3: Explanation: Flyback converter is isolated version of buck-boost converter. ",
+        "d": "Explanation 4"
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
@@ -70,10 +70,10 @@
         "d": "0.7"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "a": "Explanation 1: Explanation: At unity turns ratio, voltage expression of flyback converter is<br><img src='images/expl2.png' height='60px'><br>At duty ratio 0.4, Vo is<br>V<sub>o</sub> = 0.67 V<sub>in</sub><br>V<sub>o</sub> is less than V<sub>in</sub>, so bucking action is performed.<br>At duty ratio 0.5, V<sub>o</sub> is<br>V<sub>o</sub> = V<sub>in</sub><br>V<sub>o</sub> is equal V<sub>in</sub>.<br>At duty ratio 0.6, V<sub>o</sub> is<br>V<sub>o</sub> = 1.5 V<sub>in</sub><br>V<sub>o</sub> is more than V<sub>in</sub>, so boosting action is performed<br>At duty ratio 0.7, V<sub>o</sub> is<br>V<sub>o</sub> = 2.33 V<sub>in</sub><br>V<sub>o</sub> is more than V<sub>in</sub>, so boosting action is performed",
         "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "c": "Explanation 3",
+        "d": "Explanation 4"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -91,12 +91,12 @@
         "d": "110 V"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "a": "Explanation 1",
         "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "c": "Explanation 3: Explanation: The voltage expression of flyback converter is<br><img src='images/expl5.png' height='200px'>",
+        "d": "Explanation 4"
       },
-      "correctAnswer": "a",
+      "correctAnswer": "c",
       "difficulty": "beginner"
     }
   ]

@@ -396,5 +396,9 @@ Simplifying eqn. (19) results in
      
 (Voltage gain expression does not include ESR of capacitor r<sub>c</sub>)<br><br>
 (n=N<sub>s</sub>/N<sub>p</sub>)
-</div>
+</div><br>
 
+<div style="float: left; width:100%;">
+  
+#### ("For more Information on mathematical analysis, see references")
+<br></div>

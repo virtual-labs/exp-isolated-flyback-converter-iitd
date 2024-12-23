@@ -2,35 +2,99 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+       
+
+
+      "question": "Answer the questions given below (refer Fig.1):<br><center> <img src='images/pre1.png' height='300px'><br><br>Fig. 1. Circuit diagram of flyback converter.</center><br><br> 1. In a flyback converter, the inductor of the buck-boost converter is replaced by",
+      "answers": {  
+        "a": "Capacitor.",
+        "b": "Resistor",
+        "c": "High frequency transformer",
+        "d": "Switch"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "a": "Explanation 1",
         "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "c": "Explanation 3: Explanation: The flyback converter is formulated from buck-boost converter by replacing the inductor with high frequency transformer.",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+      
+    {
+      
+      "question": "2. The output voltage expression of flyback converter is",
+      "answers": {
+        "a": "<img src='images/pre2.png' height='30px'><br>",
+        "b": "<img src='images/pre3.png' height='30px'><br>",
+        "c": "<img src='images/pre4.png' height='30px'><br>",
+        "d": "<img src='images/pre5.png' height='30px'><br>"
+      },
+      "explanations": {
+        "a": "Explanation 1",
+        "b": "Explanation 2: Explanation: By definition of the output voltage expression is <br><img src='images/expl1.png' height='60px'>",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    
+    {
+
+      "question": "3. Flyback converter is isolated version of:",
+      "answers": {
+        "a": "Buck converter",
+        "b": "Boost converter",
+        "c": "Buck-boost converter",
+        "d": "CUK converter"
+      },
+      "explanations": {
+        "a": "Explanation 1",
+        "b": "Explanation 2",
+        "c": "Explanation 3: Explanation: Flyback converter is isolated version of buck-boost converter. ",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+        
+    {
+
+    "question": "4. Flyback converter with unity turns ratio will perform bucking action at a duty ratio of",
+      "answers": {
+        "a": "0.4",
+        "b": "0.5",
+        "c": "0.6",
+        "d": "0.7"
+      },
+      "explanations": {
+        "a": "Explanation 1: Explanation: At unity turns ratio, voltage expression of flyback converter is<br><img src='images/expl2.png' height='60px'><br>At duty ratio 0.4, Vo is<br>V<sub>o</sub> = 0.67 V<sub>in</sub><br>V<sub>o</sub> is less than V<sub>in</sub>, so bucking action is performed.<br>At duty ratio 0.5, V<sub>o</sub> is<br>V<sub>o</sub> = V<sub>in</sub><br>V<sub>o</sub> is equal V<sub>in</sub>.<br>At duty ratio 0.6, V<sub>o</sub> is<br>V<sub>o</sub> = 1.5 V<sub>in</sub><br>V<sub>o</sub> is more than V<sub>in</sub>, so boosting action is performed<br>At duty ratio 0.7, V<sub>o</sub> is<br>V<sub>o</sub> = 2.33 V<sub>in</sub><br>V<sub>o</sub> is more than V<sub>in</sub>, so boosting action is performed",
+        "b": "Explanation 2",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
+    
     {
-      "question": "This is a Sample Question 2?",
+     
+
+ 
+      "question": "5. Find the load voltage when the duty cycle of flyback converter is 55 % and input voltage is 100 V with turns ratio of 1:2.",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "61 V",
+        "b": "28 V",
+        "c": "244 V",
+        "d": "110 V"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "a": "Explanation 1",
         "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "c": "Explanation 3: Explanation: The voltage expression of flyback converter is<br><img src='images/expl5.png' height='200px'>",
+        "d": "Explanation 4"
       },
       "correctAnswer": "c",
       "difficulty": "beginner"

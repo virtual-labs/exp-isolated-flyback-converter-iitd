@@ -1,0 +1,100 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+
+      "question": "Answer the questions given below (refer Fig.2):<br> <center> <img src='images/pos1.png' height='300px'><br><br>Fig. 2. Circuit diagram of flyback converter.</center> <br><br> 1. Choose the correct expression for inductor ripple current (∆i<sub>Lm</sub>)::",
+      "answers": {
+        "a": "<img src='images/pos2.png' height='30px'><br>",
+        "b": "<img src='images/pos3.png' height='30px'><br>",
+        "c": "<img src='images/pos4.png' height='30px'><br>",
+        "d": "<img src='images/pos5.png' height='30px'><br>"
+      },
+      "explanations": {
+        "a": "Explanation 1",
+        "b": "Explanation 2",
+        "c": "Explanation 3",
+        "d": "Explanation 4: During the “ON” time of the switch (DT<sub>s</sub>), the input voltage V<sub>in</sub> causes a linear increase in current through the magnetizing inductance. The ripple current is the difference between the maximum and minimum inductor current over the switching cycle."
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+
+    {
+
+      "question": "2. Find the load current when input current is 0.5 A and duty ratio-D is 0.7 with unity turns ratio",
+      "answers": {
+        "a": "0.21 A",
+        "b": "1.17 A",
+        "c": "0.7 A",
+        "d": "0.35 A"
+      },
+      "explanations": {
+        "a": "Explanation 1: The output voltage expression for a flyback converter is <br><img src='images/expl6.png' height='120px'>             ",
+        "b": "Explanation 2",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+
+    {
+
+      "question": "3. A flyback converter has ‘V<sub>in</sub>’ as source voltage and ‘D’ is the duty ratio. Find the r.m.s value of output voltage with unity turns ratio",
+      "answers": {
+        "a": "<img src='images/pos6.png' height='30px'><br>",
+        "b": "<img src='images/pos7.png' height='30px'><br>",
+        "c": "<img src='images/pos8.png' height='30px'><br>",
+        "d": "<img src='images/pos9.png' height='30px'><br>"
+      },
+      "explanations": {
+        "a": "Explanation 1",
+        "b": "Explanation 2: The r.m.s. value of V<sub>o</sub> accounts for its variation over time. Assuming a steady-state condition with a well-filtered output (i.e., negligible ripple and ideal components), the output voltage is effectively constant and equal to  <img src='images/expl7.png' height='30px'>.",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    
+    {
+     
+      "question": "4. Which material is used to make the core of Flyback transformer",
+      "answers": {
+        
+        "a": "Solid iron",
+        "b": "Silicon steel",
+        "c": "Ferrite material",
+        "d": "Amorphous metal"
+      },
+      "explanations": {
+        "a": "Explanation 1",
+        "b": "Explanation 2",
+        "c": "Explanation 3: The core of a flyback transformer is typically made of materials with high permeability and low core losses to ensure efficient energy storage and transfer. The most commonly used materials is ferrite and its alloys.",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+            
+    {
+      
+      "question": "5. A flyback converter in continuous conduction mode converts 160 V DC to 3.3 V DC. If the duty cycle is 0.40, calculate the turns ratio of the transformer.  Assume negligible voltage drop across switch and diode.",
+      "answers": {
+        "a": "n=1",
+        "b": "n=32:1",
+        "c": "n=1:32",
+        "d": "n=80:1"
+      },
+      "explanations": {
+        "a": "Explanation 1",
+        "b": "Explanation 2: The turns ratio expression of flyback converter is<br><img src='images/expl8.png' height='60px'> ",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
+  ]
+}
